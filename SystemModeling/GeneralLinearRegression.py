@@ -1,5 +1,5 @@
 import numpy as np
-
+#just a comment
 def mean(arr,n):
     s=0
     for i in range(n):

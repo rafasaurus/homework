@@ -69,4 +69,4 @@ for j in range(8):
 print("S=",S)
 W = (12*S)/(pow(N,2)*(pow(K,3)-K)-N*T_j_sum)
 
-print("կոնկորդացյիայի գործակից W=",W)
+print("կ,",W)
