@@ -18,14 +18,14 @@ def phi(p,mj):
 #print(phi(p,mj))
 def phi(p,m):
 
-    return 1-pow(1-p, m)
+    return 1-pow(1-p, 1+m)
 
 def func():
     arr = np.array([],dtype=float)
     for i in range(20+1):#C/ci
         middle = phi(p[0],i)
-        arr = np.append(arr, middle)
+        arr = np.append(arr*np.exp(-l*mj[0]*weight[0]), middle)
     print(arr)
     print(np.argmax(arr,axis = 0))
 func()
-
+print(np.dot(weight,mj))
