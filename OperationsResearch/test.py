@@ -24,8 +24,9 @@ def func():
     arr = np.array([],dtype=float)
     for i in range(20+1):#C/ci
         middle = phi(p[0],i)
-        arr = np.append(arr*np.exp(-l*mj[0]*weight[0]), middle)
+        arr = np.append(arr, middle*np.exp(-l*mj[0]*weight[0]))
     print(arr)
-    print(np.argmax(arr,axis = 0))
+    print("reliable quantity of m1 = ",np.argmax(arr,axis = 0))
 func()
-print(np.dot(weight,mj))
+print("wjmj",np.dot(weight,mj))
+print("cjmj",np.dot(cost,mj))
