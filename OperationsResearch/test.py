@@ -10,19 +10,18 @@ l= 0.001
 mj = np.array([2,3,4,2,2],dtype = int)
 print(np.dot(mj,weight))
 N=5
-def phi(p,mj):
-    q=1
-    for i in range(N):
-        q *= 1-pow(1-p[i], mj[i])
-    return q
+#def phi(p,mj):
+#    q=1
+#    for i in range(N):
+#        q *= 1-pow(1-p[i], mj[i])
+#    return q
 #print(phi(p,mj))
 def phi(p,m):
-
     return 1-pow(1-p, 1+m)
 
 def func():
     arr = np.array([],dtype=float)
-    for i in range(20+1):#C/ci
+    for i in range(int(C/cost[0])+1):#C/ci
         middle = phi(p[0],i)
         arr = np.append(arr, middle*np.exp(-l*mj[0]*weight[0]))
     print(arr)
