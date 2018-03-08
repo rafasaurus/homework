@@ -1,4 +1,5 @@
 import numpy as np
+import time
 C = 100
 p = np.array([0.9, 0.75, 0.65, 0.8, 0.85], dtype=float)
 # component_type = np.array([1,2,3,4,5],dtype=int)
@@ -60,8 +61,9 @@ def func(index):
         dictionary = {"arr_max": np.max(arr), "m": m}
         return dictionary
 
-
+start_time = time.time()
 global_dictionary = func(index)
+elapsed_time = time.time()-start_time
 print("global_dict=", global_dictionary["m"])
 print("arr_global = ", arr_global)
 print("--------------")
@@ -74,3 +76,4 @@ for i in range(N):
 print("answer", answer)
 print("total weight is ", np.dot(weight, global_dictionary["m"]))
 print("total cost is", np.dot(cost, global_dictionary["m"]))
+print("passed time for the program in ms ",elapsed_time*1000)
