@@ -1,23 +1,20 @@
 import numpy as np
 import time
-C = 100
+# input data
 p = np.array([0.9, 0.75, 0.65, 0.8, 0.85], dtype=float)
-# component_type = np.array([1,2,3,4,5],dtype=int)
 cost = np.array([5, 4, 9, 7, 7], dtype=int)
 weight = np.array([8, 9, 6, 7, 8], dtype=int)
 
 __lambda__ = 0.001
-
 N = 5
+index = N
+C = 100
 
+m = np.array([], dtype=int)
+arr_global = np.array([], dtype=int)
 
 def prob(p, m):
     return 1-pow(1-p, 1+m)
-
-
-index = 5
-m = np.array([], dtype=int)
-arr_global = np.array([], dtype=int)
 
 
 def func(index):
@@ -37,7 +34,7 @@ def func(index):
         C -= m[index]*cost[index]
         print("C=", C)
         dictionary = {"arr_max": np.max(arr), "m": m}
-        print("th dictionary=", dictionary, "==========================================================")
+        print("index",index,"th dictionary=", dictionary, "**********************")
         #print("m=============", m)
         return dictionary
     else:
@@ -48,7 +45,7 @@ def func(index):
         m = np.append(m, np.argmax(arr))
         C -= m[index]*cost[index]
         print("C=", C)
-        print("th dictionary=", dictionary,) 
+        print("index",index,"th dictionary=", dictionary, "**********************") 
         #print("m=============", m)
         dictionary = {"arr_max": np.max(arr), "m": m}
         return dictionary
@@ -56,14 +53,18 @@ def func(index):
 start_time = time.time()
 global_dictionary = func(index)
 elapsed_time = time.time()-start_time
-print("global_dict=", global_dictionary)
-print("arr_global = ", arr_global)
-print("--------------")
-answer = 1  # np.multiply(arr_global, np.exp(np.dot(*global_dictionary["m"],weight)))
 
+print("\n------------------------------------------------------------")
+print("m = ", global_dictionary["m"])
+print("arr_global = ", arr_global)
+print("------------------------------------------------------------\n")
+
+answer = 1 
+# calculating the answer
 for i in range(N):
     answer = answer * prob(p[i],  global_dictionary["m"][i]) * np.exp(-__lambda__*global_dictionary["m"][i]*weight[i])
+
 print("answer", answer)
 print("total weight is ", np.dot(weight, global_dictionary["m"]))
-print("total cost is", np.dot(cost, global_dictionary["m"]))
-print("passed time for the program in ms ",elapsed_time*1000)
+print("total cost is", np.dot(cost, global_dictionary["m"]),"\n")
+print("time elapsed for the program in ms ",elapsed_time*1000)
