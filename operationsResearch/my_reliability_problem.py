@@ -61,21 +61,25 @@ def func(index):
         dictionary = {"arr_max": np.max(arr), "m": m}
         return dictionary
 
+
+start_time = time.time()
+boolean = True
+max_probability = 0
+max_lambda = 0 
+max_dictionary = {}
 for i in np.arange(0.0001, 0.01, 0.0001):
     __lambda__ = i
-    print("lambda=",__lambda__)
+    print("lambda=", __lambda__)
     m = np.array([], dtype=int)
     arr_global = np.array([], dtype=int)
     C = C_global
 
-    start_time = time.time()
     global_dictionary = func(index)
-    elapsed_time = time.time()-start_time
 
-    #print("\n------------------------------------------------------------")
-    #print("m = ", global_dictionary["m"])
-    #print("arr_global = ", arr_global)
-    #print("------------------------------------------------------------\n")
+    # print("\n------------------------------------------------------------")
+    # print("m = ", global_dictionary["m"])
+    # print("arr_global = ", arr_global)
+    # print("------------------------------------------------------------\n")
 
     answer = 1
     # calculating the answer
@@ -84,24 +88,34 @@ for i in np.arange(0.0001, 0.01, 0.0001):
     print("m", global_dictionary["m"])
     print("mw=", np.dot(global_dictionary["m"], weight)) 
     print("cw", np.dot(global_dictionary["m"], cost))
-    print("theprobability of successful operation is", answer*np.exp(__lambda__*np.dot(weight, global_dictionary["m"]))) 
-    if np.dot(global_dictionary["m"], weight) == 120:
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-        print("=-=-=-=-=-=-=-==--=-=-=--=--=--=-=--=-=-=-=-=-==-=-=--=-=-=-=-=-=--=-==-=--=--\n", __lambda__)
-        break 
+    print("the probability of successful operation is", answer*np.exp(__lambda__*np.dot(weight, global_dictionary["m"]))) 
+    if boolean:
+        boolean = False
+        max_lambda = __lambda__
+        max_dictionary = global_dictionary
+    if (answer*np.exp(__lambda__*np.dot(weight, global_dictionary["m"]))) > max_probability:
+        max_lambda = __lambda__
+        max_dictionary = global_dictionary 
 
-print("\n------------------------------------------------------------")
-print("m = ", global_dictionary["m"])
-print("arr_global = ", arr_global)
-print("------------------------------------------------------------\n")
+elapsed_time = time.time()-start_time
+
+# print("\n------------------------------------------------------------")
+# print("m = ", global_dictionary["m"])
+# print("arr_global = ", arr_global)
+# print("------------------------------------------------------------\n")
 
 answer = 1
 # calculating the answer
 for i in range(N):
-    answer = answer * prob(p[i],  global_dictionary["m"][i]) * np.exp(-__lambda__*global_dictionary["m"][i]*weight[i])
+    answer = answer * prob(p[i],  max_dictionary["m"][i]) * np.exp(-__lambda__*max_dictionary["m"][i]*weight[i])
 
+print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 print("func(", N, ") with cost constraint", C_global, "is ", answer)
-print("total weight is ", np.dot(weight, global_dictionary["m"]))
-print("total cost is", np.dot(cost, global_dictionary["m"]), "\n")
+print("total weight is ", np.dot(weight, max_dictionary["m"]))
+
+print("total cost is", np.dot(cost, max_dictionary["m"]), "\n")
 print("time elapsed for the program in ms ", elapsed_time*1000)
-print("the probability of successful operation is", answer*np.exp(__lambda__*np.dot(weight, global_dictionary["m"])))
+print("the max probability of successful operation is", answer*np.exp(max_lambda*np.dot(weight, max_dictionary["m"])))
+print("max m", max_dictionary["m"])
+print("max_lambda=", max_lambda)
+print(max_dictionary)
