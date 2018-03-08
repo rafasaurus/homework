@@ -19,17 +19,21 @@ def phi(p,m):
     return 1-pow(1-p, 1+m)
 index = 5
 m = np.array([],dtype=int)
+arr_global = np.array([],dtype=int)
 def func(index):
+    arr = np.array([],dtype=float)
     global m
+    global arr_global
     index-=1
     print("index",index,"################################################################################")
-    arr = np.array([],dtype=float)
+   # arr_global = np.append(arr_global) = np.array([],dtype=float)
     #print("type of m============",type(m))
     if index == 0:
         for i in range(int(C/cost[index])+1):#C/ci
             arr = np.append(arr, phi(p[index],i)*np.exp(-l*i*weight[index]))
+        arr_global = np.append(arr_global,np.max(arr))
         #print(arr)
-        #print("reliable quantity of m1 = ",np.argmax(arr,axis = 0))
+        #print("reliable quantity of m1 = ",np.argmax(aarr_global = np.append(arr_global)rr,axis = 0))
         m = np.append(m, np.argmax(arr))
         dictionary = {"arr_max":np.max(arr),"m":m}
         print("th dictionary=",dictionary,"==========================================================") 
@@ -41,6 +45,7 @@ def func(index):
         dictionary = func(index)
         for i in range(int(C/cost[index])+1):#C/c
             arr = np.append(arr, phi(p[index],i)*np.exp(-l*i*weight[index])*dictionary["arr_max"])
+        arr_global = np.append(arr_global,np.max(arr)) 
         #print(arr)
         #print("reliable quantity of m1 = ",np.argmax(arr,axis = 0))
         m = np.append(m, np.argmax(arr))
@@ -51,6 +56,8 @@ def func(index):
     
 global_dictionary = func(index)
 print("global_dict=",global_dictionary["m"])
+print("arr_global = ",arr_global)
 print("--------------")
 print("wjmj",np.dot(weight,mj))
 print("cjmj",np.dot(cost,mj))
+print("answer",np.prod(arr_global))
