@@ -73,30 +73,30 @@ for i in np.arange(0.0001, 0.01, 0.0001):
     m = np.array([], dtype=int)
     arr_global = np.array([], dtype=int)
     C = C_global
-
     global_dictionary = func(index)
-
-    # print("\n------------------------------------------------------------")
-    # print("m = ", global_dictionary["m"])
-    # print("arr_global = ", arr_global)
-    # print("------------------------------------------------------------\n")
 
     answer = 1
     # calculating the answer
     for i in range(N):
         answer = answer * prob(p[i],  global_dictionary["m"][i]) * np.exp(-__lambda__*global_dictionary["m"][i]*weight[i])
+
     print("m", global_dictionary["m"])
     print("mw=", np.dot(global_dictionary["m"], weight)) 
     print("cw", np.dot(global_dictionary["m"], cost))
     print("the probability of successful operation is", answer*np.exp(__lambda__*np.dot(weight, global_dictionary["m"]))) 
+
     if boolean:
         boolean = False
+        max_probability = answer*np.exp(__lambda__*np.dot(weight, global_dictionary["m"])) 
         max_lambda = __lambda__
         max_dictionary = global_dictionary
+        print()
+
     if (answer*np.exp(__lambda__*np.dot(weight, global_dictionary["m"]))) > max_probability:
         max_lambda = __lambda__
         max_dictionary = global_dictionary 
-
+        max_probability = answer*np.exp(__lambda__*np.dot(weight, global_dictionary["m"])) 
+    print("max probabiliity in each iteeratins",max_probability)
 elapsed_time = time.time()-start_time
 
 # print("\n------------------------------------------------------------")
@@ -104,10 +104,10 @@ elapsed_time = time.time()-start_time
 # print("arr_global = ", arr_global)
 # print("------------------------------------------------------------\n")
 
-answer = 1
+answer = 1  #  final func 
 # calculating the answer
 for i in range(N):
-    answer = answer * prob(p[i],  max_dictionary["m"][i]) * np.exp(-__lambda__*max_dictionary["m"][i]*weight[i])
+    answer = answer * prob(p[i],  max_dictionary["m"][i]) * np.exp(-max_lambda*max_dictionary["m"][i]*weight[i])
 
 print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 print("func(", N, ") with cost constraint", C_global, "is ", answer)
@@ -119,3 +119,4 @@ print("the max probability of successful operation is", answer*np.exp(max_lambda
 print("max m", max_dictionary["m"])
 print("max_lambda=", max_lambda)
 print(max_dictionary)
+print(max_probability)
