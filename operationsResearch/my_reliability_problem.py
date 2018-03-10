@@ -65,7 +65,7 @@ boolean = True
 max_probability = 0
 max_lambda = 0 
 max_dictionary = {}
-for i in np.arange(0.0001, 0.001, 0.0001):
+for i in np.arange(0.0008, 0.0009, 0.0001):
     __lambda__ = i
     print("-------------------------------------------------------------------------------------------------------------")
     print("lambda=", __lambda__)
@@ -103,10 +103,13 @@ answer = 1  #  final func
 for i in range(N):
     answer = answer * prob(p[i],  max_dictionary["m"][i]) * np.exp(-max_lambda*max_dictionary["m"][i]*weight[i])
 
-print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+print("\n\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+max_lambda = 0.0008
 print("wm", np.dot(weight, max_dictionary["m"]))
 print("cm", np.dot(cost, max_dictionary["m"]))
 print("the max probability of successful operation is", answer*np.exp(max_lambda*np.dot(weight, max_dictionary["m"])))
 print("max m", max_dictionary["m"])
 print("max_lambda=", max_lambda)
-print("\n\n\ntime elapsed for the program in ms ", elapsed_time*1000)
+print("\n\ntime elapsed for the program in ms ", elapsed_time*1000)
