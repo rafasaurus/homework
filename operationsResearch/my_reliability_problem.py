@@ -29,8 +29,8 @@ def prob(p, m):
 def compute_global_prob(dictionary):
     answer = 1
     # calculating the answer
-    print("debug")
-    print(dictionary)
+    #print("debug")
+    #print(dictionary)
     for i in range(N):
         answer = answer * prob(p[i],  dictionary["m"][i]) * np.exp(-dictionary["lambda"]*dictionary["m"][i]*weight[i])
     wm = np.dot(dictionary["m"], weight) 
@@ -108,6 +108,7 @@ for i in np.arange(0.00001, 0.0005, 0.00001):
     C = C_global
     print("deep debug ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", lambda_min_dict)
     global_dictionary = func(index)
+    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",lambda_max_dict)
     lambda_min_dict = copy.deepcopy(lambda_max_dict)
     lambda_max_dict = copy.deepcopy(global_dictionary)
     answer = 1
@@ -150,9 +151,9 @@ for i in np.arange(0.00001, 0.0005, 0.00001):
 
     if lambda_exceeded_status == True:
         lambda_min = lambda_last
-        lambda_min_dict = lambda_min_dict.update({'lambda':lambda_min})
+        lambda_min_dict.update({'lambda': lambda_min})
         lambda_max = lambda_current
-        lambda_max_dict = lambda_max_dict.update({'lambda':lambda_max})
+        lambda_max_dict.update({'lambda': lambda_max})
         break
         
 elapsed_time = time.time()-start_time
@@ -178,5 +179,7 @@ print("lambda_min_wm=", lambda_min_wm, "lambda_max_wm", lambda_max_wm)
 # plt.scatter(wm_array, lambda_array, s=1)
 # plt.show()
 print("lambda_min_dict=", lambda_min_dict)
+
+print("lambda_max_dict=", lambda_max_dict)
 print(compute_global_prob(lambda_min_dict))
 print(compute_global_prob(lambda_max_dict))
