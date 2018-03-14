@@ -1,15 +1,14 @@
 import numpy as np
 import time
-
+import matplotlib.pyplot as plt
 # input data
-
 p = np.array([0.9, 0.75, 0.65, 0.8, 0.85], dtype=float)
 cost = np.array([5, 4, 9, 7, 7], dtype=int)
 weight = np.array([8, 9, 6, 7, 8], dtype=int)
 N = 5
 index = N
 C = 100
-
+W = 104
 #p = np.array([0.88, 0.88, 0.88, 0.88, 0.88, 0.88], dtype=float)
 #cost = np.array([7, 7, 7, 7, 7, 7], dtype=int)
 #weight = np.array([12, 12, 12, 12, 12, 12], dtype=int)
@@ -65,8 +64,22 @@ boolean = True
 max_probability = 0
 max_lambda = 0 
 max_dictionary = {}
-for i in np.arange(0.0008, 0.0009, 0.0001):
+global_wm = 0
+
+lambda_array = np.array([])
+wm_array = np.array([])
+lambda_last = 0
+lambda_current = 0
+lambda_min = 0
+lambda_max = 0
+__lambda__ = 0
+lambda_exceeded_status = False # if true then it exceeded from >0 to <0
+for i in np.arange(0.00001, 0.0005, 0.00001):
+    
+    lambda_last = __lambda__ 
+    print(bool(global_wm - W <= 0))
     __lambda__ = i
+    lambda_current = __lambda__
     print("-------------------------------------------------------------------------------------------------------------")
     print("lambda=", __lambda__)
     m = np.array([], dtype=int)
@@ -79,10 +92,13 @@ for i in np.arange(0.0008, 0.0009, 0.0001):
     for i in range(N):
         answer = answer * prob(p[i],  global_dictionary["m"][i]) * np.exp(-__lambda__*global_dictionary["m"][i]*weight[i])
 
+    global_wm = np.dot(global_dictionary["m"],weight)
     print("m", global_dictionary["m"])
-    print("wm=", np.dot(global_dictionary["m"], weight)) 
+    print("wm=", global_wm) 
     print("cm", np.dot(global_dictionary["m"], cost))
     print("the probability of successful operation is", answer*np.exp(__lambda__*np.dot(weight, global_dictionary["m"]))) 
+
+
 
     if boolean:
         boolean = False
@@ -96,7 +112,15 @@ for i in np.arange(0.0008, 0.0009, 0.0001):
         max_dictionary = global_dictionary 
         max_probability = answer*np.exp(__lambda__*np.dot(weight, global_dictionary["m"])) 
     print("max prob in each iteeration",max_probability)
+    wm_array = np.append(wm_array,global_wm)
+    lambda_array = np.append(lambda_array,__lambda__)
+    lambda_exceeded_status = bool(global_wm - W <= 0) 
 
+    if lambda_exceeded_status == True:
+        lambda_min = lambda_last
+        lambda_max = lambda_current
+        break
+        
 elapsed_time = time.time()-start_time
 answer = 1  #  final func 
 # calculating the answer
@@ -113,3 +137,10 @@ print("the max probability of successful operation is", answer*np.exp(max_lambda
 print("max m", max_dictionary["m"])
 print("max_lambda=", max_lambda)
 print("\n\ntime elapsed for the program in ms ", elapsed_time*1000)
+print(lambda_array, wm_array)
+
+print("lambda_current=", lambda_current, "lambda_last=", lambda_last)
+
+plt.scatter(wm_array, lambda_array, s=1)
+plt.show()
+
