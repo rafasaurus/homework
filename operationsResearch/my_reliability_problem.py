@@ -101,14 +101,11 @@ for i in np.arange(0.00001, 0.0005, 0.00001):
     print(bool(global_wm - W <= 0))
     __lambda__ = i
     lambda_current = __lambda__
-    print("-------------------------------------------------------------------------------------------------------------")
     print("lambda=", __lambda__)
     m = np.array([], dtype=int)
     arr_global = np.array([], dtype=int)
     C = C_global
-    print("deep debug ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", lambda_min_dict)
     global_dictionary = func(index)
-    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",lambda_max_dict)
     lambda_min_dict = copy.deepcopy(lambda_max_dict)
     lambda_max_dict = copy.deepcopy(global_dictionary)
     answer = 1
@@ -154,8 +151,6 @@ for i in np.arange(0.00001, 0.0005, 0.00001):
         lambda_min_dict.update({'lambda': lambda_min})
         lambda_max = lambda_current
         lambda_max_dict.update({'lambda': lambda_max})
-        break
-        
 elapsed_time = time.time()-start_time
 answer = 1  #  final func 
 # calculating the answer

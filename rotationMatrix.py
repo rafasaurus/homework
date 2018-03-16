@@ -1,26 +1,40 @@
-import numpy as np
-arr= np.array([1,7,2,2,
-               3,0,0,9,
-               1,0,0,5,
-               4,4,0,3],dtype=int)
-arr = arr.reshape((4,4))
-print(arr)
-n=arr.shape[0]-1
-for i in range(int(n)):
-    for j in range(int(n/2)+1):
-        for k in range(int(n/2)+1):
-            temp = arr[iubuntu, k]
+# Python3 program to rotate a matrix by 90 degrees
+import numpy as np     
+N = 4
+ 
+# An Inplace function to rotate 
+# N x N matrix by 90 degrees in
+# anti-clockwise direction
+arr = np.array([1, 3, 4, 5,
+                7, 8, 9, 0,
+                3, 1, 2, 3,
+                6, 3, 4, 6], dtype = int)
+def rotateMatrix(mat):
+     
+    # Consider all squares one by one
+    for x in range(0, int(N/2)):
+         
+        # Consider elements in group   
+        # of 4 in current square
+        for y in range(x, N-x-1):
+             
+            # store current cell in temp variable
+            temp = mat[x][y]
+ 
+            # move values from right to top
+            mat[x][y] = mat[y][N-1-x]
+ 
+            # move values from bottom to right
+            mat[y][N-1-x] = mat[N-1-x][N-1-y]
+ 
+            # move values from left to bottom
+            mat[N-1-x][N-1-y] = mat[N-1-y][x]
+ 
+            # assign temp to left
+            mat[N-1-y][x] = temp
 
-            arr[i, k] = arr[i, j]
 
-            arr[n-k, j] = arr[n-k, n-k]
 
-            arr[n-k, n-k] = arr[k, n-k]
 
-            arr[k, n-k] = temp
 
-            print(k)
-        break
-    break
-print()
-print(arr)
+print(rotateMatrix(arr))
