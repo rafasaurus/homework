@@ -40,7 +40,7 @@ def compute_global_prob(dictionary):
     return_dict = {"prob":answer*np.exp(dictionary["lambda"]*np.dot(weight, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
     return return_dict 
 
-def func(index):
+def func(index, __lambda__):
     arr = np.array([], dtype=float)
     global m
     global arr_global
@@ -56,12 +56,12 @@ def func(index):
         m = np.append(m, np.argmax(arr))
         C -= m[index]*cost[index]
         # print("C=", C)
-        dictionary = {"arr_max": np.max(arr), "m": m}
+        dictionary = {"arr_max": np.max(arr), "m": m, "lambda":__lambda__}
         # print("index", index, "th dictionary=", dictionary, "**********************")
         # print("m=============", m)
         return dictionary
     else:
-        dictionary = func(index)
+        dictionary = func(index,__lambda__)
         for i in range(int(C/cost[index])+1):  # C/c
             arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*weight[index])*dictionary["arr_max"])
         arr_global = np.append(arr_global, np.max(arr)) 
@@ -70,7 +70,7 @@ def func(index):
         # print("C=", C)
         # print("index", index, "th dictionary=", dictionary, "**********************") 
         # print("m=============", m)
-        dictionary = {"arr_max": np.max(arr), "m": m}
+        dictionary = {"arr_max": np.max(arr), "m": m, "lambda":__lambda__}
         return dictionary
 
 
@@ -105,7 +105,9 @@ for i in np.arange(0.00001, 0.0005, 0.00001):
     m = np.array([], dtype=int)
     arr_global = np.array([], dtype=int)
     C = C_global
-    global_dictionary = func(index)
+
+    global_dictionary = func(index, __lambda__)######
+
     lambda_min_dict = copy.deepcopy(lambda_max_dict)
     lambda_max_dict = copy.deepcopy(global_dictionary)
     answer = 1
@@ -113,11 +115,8 @@ for i in np.arange(0.00001, 0.0005, 0.00001):
     for i in range(N):
         answer = answer * prob(p[i],  global_dictionary["m"][i]) * np.exp(-__lambda__*global_dictionary["m"][i]*weight[i])
 
-    lambda_min_wm = global_wm
 
-    global_wm = np.dot(global_dictionary["m"],weight)
-
-    lambda_max_wm = global_wm
+    
 
 
 
@@ -139,18 +138,15 @@ for i in np.arange(0.00001, 0.0005, 0.00001):
         max_lambda = __lambda__
         max_dictionary = global_dictionary.copy()
         max_probability = answer*np.exp(__lambda__*np.dot(weight, global_dictionary["m"])) 
-    print("max prob in each iteeration",max_probability)
+    print("max prob in each iteeration", max_probability)
     
-    wm_array = np.append(wm_array,global_wm)
-    lambda_array = np.append(lambda_array,__lambda__)
-    lambda_exceeded_status = bool(global_wm - W <= 0) 
+    # wm_array = np.append(wm_array,global_wm)
+    # lambda_array = np.append(lambda_array,__lambda__) 
+    global_wm = np.dot(global_dictionary["m"], weight)
 
+    if bool(global_wm - W <= 0) == True:
+        break
 
-    if lambda_exceeded_status == True:
-        lambda_min = lambda_last
-        lambda_min_dict.update({'lambda': lambda_min})
-        lambda_max = lambda_current
-        lambda_max_dict.update({'lambda': lambda_max})
 elapsed_time = time.time()-start_time
 answer = 1  #  final func 
 # calculating the answer
