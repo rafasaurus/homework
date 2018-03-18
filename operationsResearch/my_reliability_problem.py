@@ -70,11 +70,9 @@ def func(index, __lambda__):
 start_time = time.time()
 boolean = True
 max_probability = 0
-max_lambda = 0 
 max_dictionary = {}
 global_wm = 0
 
-wm_array = np.array([])
 __lambda__ = 0
 global_wm = 0
 global_dictionary = {}
@@ -89,18 +87,19 @@ for i in np.arange(0.00001, 0.001, 0.00001):
     arr_global = np.array([], dtype=int)
     C = C_global
 
-    global_dictionary = func(index, __lambda__)######
+    global_dictionary = func(index, __lambda__) ######
 
     lambda_min_dict = copy.deepcopy(lambda_max_dict)
     lambda_max_dict = copy.deepcopy(global_dictionary)
 
+    # first assingment of max_probability
     if boolean:
         boolean = False
         max_dictionary = global_dictionary.copy()
         max_probability = compute_global_prob(max_dictionary)["prob"]
-        max_lambda = __lambda__
+
+    # check if it is max probability 
     if compute_global_prob(global_dictionary)["prob"] > max_probability:
-        max_lambda = __lambda__
         max_dictionary = global_dictionary.copy()
         max_probability = compute_global_prob(max_dictionary)["prob"]
 
@@ -111,29 +110,13 @@ for i in np.arange(0.00001, 0.001, 0.00001):
         break
 '''
 elapsed_time = time.time()-start_time
-answer = 1  #  final func 
-# calculating the answer
-print("\n\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-print("wm", np.dot(weight, max_dictionary["m"]))
-print("cm", np.dot(cost, max_dictionary["m"]))
-# print("the max probability of successful operation is", answer*np.exp(max_lambda*np.dot(weight, max_dictionary["m"])))
-print("max m", max_dictionary["m"])
-print("max_lambda=", max_lambda)
 print("\n\ntime elapsed for the program in ms ", elapsed_time*1000)
-
-print("lambda_current=", lambda_min_dict["lambda"], "lambda_last=", lambda_min_dict["m"])
-print("lambda_min_wm=", lambda_max_dict["lambda"], "lambda_max_wm", lambda_max_dict["m"])
-print(wm_array)
+print("\nmax_dictionary:", max_dictionary)
+print("compute_global_prob:", compute_global_prob(max_dictionary))
 # plt.scatter(wm_array, lambda_array, s=1)
 # plt.show()
-print("lambda_min_dict=", lambda_min_dict)
+print("\nlambda_min_dict=", lambda_min_dict)
 print("lambda_max_dict=", lambda_max_dict)
 print()
-print("global_prob min:",compute_global_prob(lambda_min_dict))
-print("global_prob_max:",compute_global_prob(lambda_max_dict))
-
-
-
-
-
-
+print("global_prob min:", compute_global_prob(lambda_min_dict))
+print("global_prob_max:", compute_global_prob(lambda_max_dict))
