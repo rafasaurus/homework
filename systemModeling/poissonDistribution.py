@@ -1,6 +1,36 @@
 import numpy as np
 import matplotlib.pyplot as plt
-miu = 10# for mixed version
+
+
+def __randn__(randoms_mixed, expectaion, sigma):  # normal distribution rand
+    length = int(randoms_mixed.shape[1]/12)
+    print(length)
+    randoms_mixed = randoms_mixed[0, :length*12]
+    print(randoms_mixed)
+    randoms_mixed = randoms_mixed.reshape((length, 12))
+    print(randoms_mixed)
+    S = 0
+    randoms_normal = np.array([])
+    x_axis = np.array([])
+    x_axis_index = 0
+    for randoms_mixed_i in randoms_mixed:
+        S = 0
+        x_axis_index += 1
+        x_axis = np.append(x_axis, x_axis_index)
+        for j in range(12):
+            S += randoms_mixed_i[j]
+        randoms_normal = np.append(randoms_normal, expectaion + sigma*(S-6))
+
+    plt.subplot(223)
+    plt.title("nomrla dist")
+    plt.xlabel('number of points')
+    plt.ylabel('P(X)')
+    print("x_axis_index.shape", x_axis.shape, randoms_normal.shape)
+    plt.scatter(randoms_normal, x_axis)
+    return randoms_normal
+
+
+miu = 10  #  for mixed version
 n0 = 12947 
 exponent_dist_lambda = 0.4
 poisson_lambda = 3
@@ -8,7 +38,7 @@ poisson_lambda = 3
 t = 2
 __lambda__ = 8*t+3
 
-k = 10
+k = 14
 m = pow(2, k)
 randoms = np.array([])
 randoms_mixed = np.array([])
@@ -28,7 +58,7 @@ for i in range(pow(2, k-2)):
     last_n_mixed = last_n
     randoms = np.append(randoms, n/m)
     randoms_mixed = np.append(randoms_mixed, n_mixed/m)
-
+    # poisson ditribution 
     r = n_mixed/m
     S = S * r
 
@@ -40,6 +70,8 @@ for i in range(pow(2, k-2)):
         poison_index_plot = np.append(poison_index_plot, index_poison)
     else:
         J = J+1
+    # poisson distribution
+    #
 
 print(randoms)
 print(np.mean(randoms))
@@ -49,7 +81,7 @@ print(np.mean(randoms_mixed))
 exponent_dist = (-1/exponent_dist_lambda) * np.log(randoms_mixed)
 print("exponent_dist mean :", np.mean(exponent_dist))
 plt.figure(1)
-plt.subplot(211)
+plt.subplot(221)
 plt.xlabel('number of points')
 
 plt.ylabel('P(X)')
@@ -59,11 +91,20 @@ plt.grid(True)
 
 randoms_mixed = np.random.rand(1, pow(2, k-2))
 exponent_dist = (-1/exponent_dist_lambda) * np.log(randoms_mixed)
-plt.subplot(212)
+plt.subplot(222)
 plt.xlabel('number of points')
 plt.ylabel('P(X)')
-#plt.title("numpy")
+plt.title("numpy")
 plt.scatter(poison_index_plot, poisson_randoms)
 
-plt.show()
+plt.subplot(224)
+plt.xlabel('number of points')
+plt.ylabel('P(X)')
+plt.title("random vars")
+plt.scatter(index__, randoms_mixed)
 print(poisson_randoms)
+sigma = 1
+expectaion = 0
+randoms_normal = __randn__(randoms_mixed, expectaion, sigma)
+print("randoms_normal:", randoms_normal)
+plt.show()
