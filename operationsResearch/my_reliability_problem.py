@@ -31,7 +31,7 @@ def prob(p, m):
 
 def compute_global_prob(dictionary):
     answer = 1
-
+    print(dictionary)
     for i in range(N):
         answer = answer * prob(p[i],  dictionary["m"][i]) * np.exp(-dictionary["lambda"]*dictionary["m"][i]*weight[i])
     wm = np.dot(dictionary["m"], weight) 
@@ -39,36 +39,40 @@ def compute_global_prob(dictionary):
 
     return_dict = {"prob": answer*np.exp(dictionary["lambda"]*np.dot(weight, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
     return return_dict 
-
-
+m = np.array([])
 def func(global_index, index, __lambda__, C):
-
+    global m
     arr = np.array([], dtype=float)
     global debug_index
-    print("******************************index***************************:", index)
-    m = np.array([])
-    if index == 1:
+    print("******************************index", index, "***************************:")
+
+
+    if index == 0:
         # max of the phi(mj1)*exp(-lambda*weight1)
         for i in range(int((C)/cost[index])+1):  # C/ci
             arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*weight[index]))
             
 
         m = np.append(m, np.argmax(arr))  # arr comes with none so you should continue in line 72
-        dictionary = {"arr_max": np.max(arr), "m": m, "lambda": __lambda__}
+        dictionary = {"arr_max": np.max(arr), "m": m, "lambda": __lambda__, "index:": index}
 
-        debug_index+=1
+        debug_index += 1
         return dictionary
     else:
+
         for i in range(int((C)/cost[index])+1):  # mj = C/cj
+            m = []
             cm = i*cost[index]  # MN CN
+
             dictionary = func(global_index, index-1, __lambda__, C-cm)
             arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*weight[index])*dictionary["arr_max"])
+        # m = np.append(m, np.argmax(arr))
 
-
+        print(arr)
         m = np.append(m, np.argmax(arr))
-        dictionary = {"arr_max": np.max(arr), "m": m,  "lambda": __lambda__}
-
-        debug_index +=1
+        dictionary = {"arr_max": np.max(arr), "m": m,  "lambda": __lambda__, "index:": index}
+        print(dictionary)
+        debug_index += 1
         return dictionary
 
 
@@ -131,8 +135,8 @@ print("compute_global_prob:", compute_global_prob(max_dictionary))
 print("\nlambda_min_dict=", lambda_min_dict)
 print("lambda_max_dict=", lambda_max_dict)
 print()
-print("global_prob min:", compute_global_prob(lambda_min_dict))
-print("global_prob_max:", compute_global_prob(lambda_max_dict))
+#print("global_prob min:", compute_global_prob(lambda_min_dict))
+#print("global_prob_max:", compute_global_prob(lambda_max_dict))
 print()
 
 
