@@ -74,7 +74,7 @@ def func(global_index, index, __lambda__, C, m):
             if boolean:
                 boolean = False
                 max_dictionary = dictionary
-            if compute_global_prob(max_dictionary)['prob'] < computed['prob'] and computed['wm'] == 97:
+            if compute_global_prob(max_dictionary)['prob'] < computed['prob'] and computed['wm'] <= 104:
                 max_dictionary = copy.deepcopy(dictionary)
             # print("computed:", computed)
 
@@ -126,6 +126,7 @@ for __lambda__ in np.arange(0.001, 0.002, 0.001):  # for my problem
     
     global_dictionary = func(global_index, index-1, __lambda__, C, m)  ######
     # print("max_dictionary:", max_dictionary)
+    boolean = True
     print("global compute for max dict:", compute_global_prob(max_dictionary))        
 elapsed_time = time.time()-start_time
 print("\n\ntime elapsed for the program in ms ", elapsed_time*1000)

@@ -4,23 +4,23 @@ import matplotlib.pyplot as plt
 import copy
 # input data
 
-# p = np.array([0.9, 0.75, 0.65, 0.8, 0.85], dtype=float)
-# cost = np.array([5, 4, 9, 7, 7], dtype=int)
-# weight = np.array([8, 9, 6, 7, 8], dtype=int)
-# N = 5
-# index = N
-# C = 100
-# W = 104
-
-l = [0.0001, 0.0002, 0.000001, 1, 0.00001, 2, 0.001, 0.01]
-
-p = np.array([0.88, 0.88, 0.88, 0.88, 0.88, 0.88], dtype=float)
-weight = np.array([7, 7, 7, 7, 7, 7], dtype=int)
-cost = np.array([12, 12, 12, 12, 12, 12], dtype=int)
-N = 6
+p = np.array([0.9, 0.75, 0.65, 0.8, 0.85], dtype=float)
+weight = np.array([5, 4, 9, 7, 7], dtype=int)
+cost = np.array([8, 9, 6, 7, 8], dtype=int)
+N = 5
 index = N
-C = 130
-W = 120
+C = 104
+W = 100
+
+l = [0.0008]# , 0.0002, 0.000001, 1, 0.00001]
+
+# p = np.array([0.88, 0.88, 0.88, 0.88, 0.88, 0.88], dtype=float)
+# weight = np.array([7, 7, 7, 7, 7, 7], dtype=int)
+# cost = np.array([12, 12, 12, 12, 12, 12], dtype=int)
+# N = 6
+# index = N
+# C = 130
+# W = 120
 
 m = np.array([], dtype=int)
 arr_global = np.array([], dtype=int)
@@ -73,9 +73,9 @@ def func(index, W, m):
             if boolean:
                 boolean = False
                 max_dictionary = dictionary
-            if compute_global_prob(max_dictionary)['prob'] < computed['prob']:#  and computed['cm'] <= 142:
+            if compute_global_prob(max_dictionary)['prob'] < computed['prob']  and computed['cm'] <= C:
                 max_dictionary = copy.deepcopy(dictionary)
-            # print("computed:", computed)
+            print("computed:", computed)
 
 
             arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*cost[index])*dictionary["arr_max"])
@@ -93,7 +93,7 @@ boolean = True
 max_dictionary = {}
 
 global_dictionary = {}
-for __lambda__ in l:# np.arange(0.00018, 0.00019 , 0.000001):  # for my problem
+for __lambda__ in l:#np.arange(0,10 , 1):  # for my problem
 
     print("-----------------------------------------------------------------------")
     print("lambda=", __lambda__)

@@ -12,7 +12,7 @@ import copy
 # C = 100
 # W = 104
 
-l = [0.0001, 0.0002, 0.000001, 1, 0.00001, 2, 0.001, 0.01]
+l = [0.0001, 0.0002, 0.000001, 1, 0.00001]
 
 p = np.array([0.88, 0.88, 0.88, 0.88, 0.88, 0.88], dtype=float)
 weight = np.array([7, 7, 7, 7, 7, 7], dtype=int)
@@ -93,7 +93,7 @@ boolean = True
 max_dictionary = {}
 
 global_dictionary = {}
-for __lambda__ in l:# np.arange(0.00018, 0.00019 , 0.000001):  # for my problem
+for __lambda__ in l:#np.arange(0,10 , 1):  # for my problem
 
     print("-----------------------------------------------------------------------")
     print("lambda=", __lambda__)
