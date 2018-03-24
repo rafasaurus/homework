@@ -12,7 +12,7 @@ import copy
 # C = 100
 # W = 104
 
-l = [0.0001, 0.0002, 0.000001, 1, 0.00001, 2, 0.001, 0.01]
+l = [10, 0.0002, 0.000001, 1, 0.00001, 2, 0.001, 0.01]
 
 p = np.array([0.88, 0.88, 0.88, 0.88, 0.88, 0.88], dtype=float)
 weight = np.array([7, 7, 7, 7, 7, 7], dtype=int)
@@ -39,7 +39,7 @@ def compute_global_prob(dictionary):
     wm = np.dot(dictionary["m"], weight) 
     cm = np.dot(dictionary["m"], cost)
 
-    return_dict = {"prob": answer*np.exp(dictionary["lambda"]*np.dot(weight, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
+    return_dict = {"prob": answer*np.exp(-dictionary["lambda"]*np.dot(weight, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
     return return_dict 
 
 
@@ -93,7 +93,7 @@ boolean = True
 max_dictionary = {}
 
 global_dictionary = {}
-for __lambda__ in l:# np.arange(0.00018, 0.00019 , 0.000001):  # for my problem
+for __lambda__ in np.arange(0.00091, 0.00092 , 0.0000001):  # for my problem
 
     print("-----------------------------------------------------------------------")
     print("lambda=", __lambda__)

@@ -37,7 +37,7 @@ def compute_global_prob(dictionary):
     wm = np.dot(dictionary["m"], weight) 
     cm = np.dot(dictionary["m"], cost)
 
-    return_dict = {"prob": answer*np.exp(dictionary["lambda"]*np.dot(weight, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
+    return_dict = {"prob": answer*np.exp(-dictionary["lambda"]*np.dot(weight, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
     return return_dict 
 m = np.array([])
 
@@ -117,7 +117,7 @@ lambda_max_dict = {}
 the_best_dict = {}
 # -----------------------------------------------
 global_index = copy.copy(index)
-for __lambda__ in np.arange(0.001, 0.002, 0.001):  # for my problem
+for __lambda__ in np.arange(0.0001, 0.002, 0.0001):  # for my problem
     print("-----------------------------------------------------------------------")
     C_global = copy.copy(C)
     print("lambda=", __lambda__)
