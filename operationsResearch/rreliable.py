@@ -4,21 +4,23 @@ import matplotlib.pyplot as plt
 import copy
 # input data
 
-p = np.array([0.9, 0.75, 0.65, 0.8, 0.85], dtype=float)
-cost = np.array([5, 4, 9, 7, 7], dtype=int)
-weight = np.array([8, 9, 6, 7, 8], dtype=int)
-N = 5
-index = N
-C = 100
-W = 104
-
-# p = np.array([0.88, 0.88, 0.88, 0.88, 0.88, 0.88], dtype=float)
-# weight = np.array([7, 7, 7, 7, 7, 7], dtype=int)
-# cost = np.array([12, 12, 12, 12, 12, 12], dtype=int)
-# N = 6
+# p = np.array([0.9, 0.75, 0.65, 0.8, 0.85], dtype=float)
+# cost = np.array([5, 4, 9, 7, 7], dtype=int)
+# weight = np.array([8, 9, 6, 7, 8], dtype=int)
+# N = 5
 # index = N
-# C = 130
-# W = 120
+# C = 100
+# W = 104
+
+l = [0.0001, 0.0002, 1, 4, 10]
+
+p = np.array([0.88, 0.88, 0.88, 0.88, 0.88, 0.88], dtype=float)
+weight = np.array([7, 7, 7, 7, 7, 7], dtype=int)
+cost = np.array([12, 12, 12, 12, 12, 12], dtype=int)
+N = 6
+index = N
+C = 130
+W = 120
 
 m = np.array([], dtype=int)
 arr_global = np.array([], dtype=int)
@@ -39,94 +41,69 @@ def compute_global_prob(dictionary):
 
     return_dict = {"prob": answer*np.exp(dictionary["lambda"]*np.dot(weight, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
     return return_dict 
-m = np.array([])
 
 
-def func(global_index, index, __lambda__, C, m):
+def func(index, W, m):
+    global __lambda__
     arr = np.array([], dtype=float)
+
     global debug_index
     # print("******************************index", index, "***************************:")
     global max_dictionary
     global boolean
-    global C_global
     if index == 0:
         # max of the phi(mj1)*exp(-lambda*weight1)
-        for i in range(int((C)/cost[index])+1):  # C/ci
-            arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*weight[index]))
+        for i in range(int((W)/weight[index])+1):  # C/ci
+            arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*cost[index]))
             
         m = np.append(m, np.argmax(arr))  # arr comes with none so you should continue in line 72
         dictionary = {"arr_max": np.max(arr), "m": m, "lambda": __lambda__}
-        # print("m:", m)
-        # if set(m) == set([2, 3, 4, 3, 2]):
-        #    print("1231231312312312312313")
+
         debug_index += 1
         return dictionary
     else:
 
-        for i in range(int((C)/cost[index])+1):  # mj = C/cj
+        for i in range(int((W)/weight[index])+1):  # mj = C/cj
             # m :w= []
             m = np.append(m, i)
-            cm = i*cost[index]  # MN CN
-            dictionary = func(global_index, index-1, __lambda__, C-cm, m)
+            wm = i*weight[index]  # MN CN
+            dictionary = func(index-1, W-wm, m)
             # print("dictionary:", dictionary)
 
             computed = compute_global_prob(dictionary)
             if boolean:
                 boolean = False
                 max_dictionary = dictionary
-            if compute_global_prob(max_dictionary)['prob'] < computed['prob'] and computed['wm'] == 97:
+            if compute_global_prob(max_dictionary)['prob'] < computed['prob']:#  and computed['cm'] == 132:
                 max_dictionary = copy.deepcopy(dictionary)
             # print("computed:", computed)
 
-            arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*weight[index])*dictionary["arr_max"])
-            m = m[:-1]
-        # m = np.append(m, np.argmax(arr))
 
-        # print(arr)
+            arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*cost[index])*dictionary["arr_max"])
+            m = m[:-1]
         m = dictionary["m"]
         m = m[:-1]
         m = np.append(m, np.argmax(arr))
         dictionary = {"arr_max": np.max(arr), "m": m,  "lambda": __lambda__}
-        # compute_global_prob called on dictionary 
-        # if boolean:
-        #     boolean = False
-        #     max_dictionary = dictionary
-        # if compute_global_prob(max_dictionary)['prob'] < computed['prob']:
-        #     max_dictionary = copy.deepcopy(dictionary)
-
-        # print("wm <= W", bool(computed['wm'] < W), computed['wm'], "<=", W) ##and computed['cm'] <= C))
-        # print("cm <= C", bool(computed['cm'] < C_global), computed['cm'], "<=", C_global)
-        # print(computed)
-        # if bool(int(computed['wm']) <= int(W)) and bool(int(computed['cm']) <= int(C_global)):
-        #    print("COMPUTE_GLOBAL_PROB:", computed)
-        # print(dictionary)
         debug_index += 1
         return dictionary
 
 
 start_time = time.time()
 boolean = True
-max_probability = 0
 max_dictionary = {}
 
-__lambda__ = 0
-global_wm = 0
 global_dictionary = {}
-lambda_max_dict = {}
-# -----------------------------------------------
-the_best_dict = {}
-# -----------------------------------------------
-global_index = copy.copy(index)
-for __lambda__ in np.arange(0.001, 0.002, 0.001):  # for my problem
+for __lambda__ in l:#np.arange(0,10 , 1):  # for my problem
+
     print("-----------------------------------------------------------------------")
-    C_global = copy.copy(C)
     print("lambda=", __lambda__)
 
-    m = np.array([], dtype=int)
     
-    global_dictionary = func(global_index, index-1, __lambda__, C, m)  ######
+    global_dictionary = func(index-1, W, m)  ######
     # print("max_dictionary:", max_dictionary)
     print("global compute for max dict:", compute_global_prob(max_dictionary))        
+    boolean = True
 elapsed_time = time.time()-start_time
 print("\n\ntime elapsed for the program in ms ", elapsed_time*1000)
 print("debug_index:", debug_index)
