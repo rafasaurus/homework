@@ -35,11 +35,11 @@ def compute_global_prob(dictionary):
     answer = 1
     # print(dictionary)
     for i in range(N):
-        answer = answer * prob(p[i],  dictionary["m"][i]) * np.exp(-dictionary["lambda"]*dictionary["m"][i]*weight[i])
+        answer = answer * prob(p[i],  dictionary["m"][i]) * np.exp(-dictionary["lambda"]*dictionary["m"][i]*cost[i])
     wm = np.dot(dictionary["m"], weight) 
     cm = np.dot(dictionary["m"], cost)
 
-    return_dict = {"prob": answer*np.exp(-dictionary["lambda"]*np.dot(weight, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
+    return_dict = {"prob": answer*np.exp(dictionary["lambda"]*np.dot(cost, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
     return return_dict 
 
 
@@ -73,7 +73,7 @@ def func(index, W, m):
             if boolean:
                 boolean = False
                 max_dictionary = dictionary
-            if compute_global_prob(max_dictionary)['prob'] < computed['prob']:#  and computed['cm'] <= 142:
+            if compute_global_prob(max_dictionary)['prob'] < computed['prob']:# and computed['cm'] <= 132:
                 max_dictionary = copy.deepcopy(dictionary)
             # print("computed:", computed)
 
@@ -93,7 +93,7 @@ boolean = True
 max_dictionary = {}
 
 global_dictionary = {}
-for __lambda__ in np.arange(0.00091, 0.00092 , 0.0000001):  # for my problem
+for __lambda__ in l:# np.arange(0.00091, 0.00092 , 0.00001):  # for my problem
 
     print("-----------------------------------------------------------------------")
     print("lambda=", __lambda__)

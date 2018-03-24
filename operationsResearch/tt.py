@@ -12,7 +12,7 @@ index = N
 C = 104
 W = 100
 
-l = [0.0008]# , 0.0002, 0.000001, 1, 0.00001]
+l = [0.0008 , 0.0002, 0.000001, 1, 0.00001]
 
 # p = np.array([0.88, 0.88, 0.88, 0.88, 0.88, 0.88], dtype=float)
 # weight = np.array([7, 7, 7, 7, 7, 7], dtype=int)
@@ -39,7 +39,7 @@ def compute_global_prob(dictionary):
     wm = np.dot(dictionary["m"], weight) 
     cm = np.dot(dictionary["m"], cost)
 
-    return_dict = {"prob": answer*np.exp(dictionary["lambda"]*np.dot(weight, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
+    return_dict = {"prob": answer*np.exp(-dictionary["lambda"]*np.dot(weight, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
     return return_dict 
 
 
@@ -75,7 +75,7 @@ def func(index, W, m):
                 max_dictionary = dictionary
             if compute_global_prob(max_dictionary)['prob'] < computed['prob']  and computed['cm'] <= C:
                 max_dictionary = copy.deepcopy(dictionary)
-            print("computed:", computed)
+            # print("computed:", computed)
 
 
             arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*cost[index])*dictionary["arr_max"])

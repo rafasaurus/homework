@@ -1,0 +1,141 @@
+import numpy as np
+import time
+import matplotlib.pyplot as plt
+import copy
+# input data
+
+# p = np.array([0.9, 0.75, 0.65, 0.8, 0.85], dtype=float)
+# cost = np.array([5, 4, 9, 7, 7], dtype=int)
+# weight = np.array([8, 9, 6, 7, 8], dtype=int)
+# N = 5
+# index = N
+# C = 100
+# W = 104
+p = np.array([0.88, 0.88, 0.88, 0.88, 0.88, 0.88], dtype=float)
+weight = np.array([7, 7, 7, 7, 7, 7], dtype=int)
+cost = np.array([12, 12, 12, 12, 12, 12], dtype=int)
+N = 6
+index = N
+C = 200
+W = 120
+
+C_global = C
+m = np.array([], dtype=int)
+arr_global = np.array([], dtype=int)
+
+
+def prob(p, m):
+    return 1-pow(1-p, 1+m)
+
+
+def compute_global_prob(dictionary):
+    answer = 1
+
+    for i in range(N):
+        answer = answer * prob(p[i],  dictionary["m"][i]) * np.exp(-dictionary["lambda"]*dictionary["m"][i]*weight[i])
+    wm = np.dot(dictionary["m"], weight) 
+    cm = np.dot(dictionary["m"], cost)
+
+    return_dict = {"prob": answer*np.exp(dictionary["lambda"]*np.dot(weight, dictionary["m"])),"wm":wm, "cm":cm, "m":dictionary["m"]}
+    return return_dict 
+
+
+def compute_lagrange(dictionary):
+    for i in np.arange(dictionary['lambda']-0.0001, dictionary['lambda']-0.001, 0.0001):
+        print(i)
+def func(index, __lambda__):
+    arr = np.array([], dtype=float)
+    global m
+    global arr_global
+    global C
+    index -= 1
+    
+    if index == 0:
+        for i in range(int(C/cost[index])+1):  # C/ci
+            arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*weight[index]))
+        arr_global = np.append(arr_global, np.max(arr))
+        # print("arr:", arr)
+        # print("arr_max:", np.max(arr))
+        # print("arg_max:", np.argmax(arr))      
+        m = np.append(m, np.argmax(arr))
+        C -= m[index]*cost[index]
+        dictionary = {"arr_max": np.max(arr), "m": m, "lambda": __lambda__}
+        return dictionary
+    else:
+        dictionary = func(index, __lambda__)
+        for i in range(int(C/cost[index])+1):  # C/c
+            arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*weight[index])*dictionary["arr_max"])
+        # print("arr:", arr)
+        # print("arr_max:", np.max(arr))
+        # print("arg_max:", np.argmax(arr))
+        arr_global = np.append(arr_global, np.max(arr)) 
+        m = np.append(m, np.argmax(arr))
+        C -= m[index]*cost[index]
+        dictionary = {"arr_max": np.max(arr), "m": m, "lambda": __lambda__}
+        return dictionary
+
+
+start_time = time.time()
+boolean = True
+max_probability = 0
+max_dictionary = {}
+
+__lambda__ = 0
+global_wm = 0
+global_dictionary = {}
+lambda_max_dict = {}
+# -----------------------------------------------
+the_best_dict = {}
+# -----------------------------------------------
+for __lambda__ in np.arange(0, 0.002, 0.0001):  # for my problem
+    print("lambda=", __lambda__)
+
+    m = np.array([], dtype=int)
+    arr_global = np.array([], dtype=int)
+    C = C_global
+
+    global_dictionary = func(index, __lambda__)  ######
+
+    lambda_min_dict = copy.deepcopy(lambda_max_dict)
+    lambda_max_dict = copy.deepcopy(global_dictionary)
+
+    # first assingment of max_probability
+    if boolean:
+        boolean = False
+        max_dictionary = global_dictionary.copy()
+        max_probability = compute_global_prob(max_dictionary)["prob"]
+
+    # check if it is max probability 
+    if compute_global_prob(global_dictionary)["prob"] > max_probability:
+        max_dictionary = global_dictionary.copy()
+        max_probability = compute_global_prob(max_dictionary)["prob"]
+
+    print("probability:", compute_global_prob(global_dictionary)["prob"]) 
+    global_wm = np.dot(global_dictionary["m"], weight)
+    # ---------------------------------
+    print((global_dictionary["m"]))
+    print("wm:", global_wm)
+    print("cm:", np.dot(global_dictionary["m"], cost))
+
+    if bool(global_wm - W == 0) is True:
+        the_best_dict = global_dictionary        
+        
+elapsed_time = time.time()-start_time
+print("\n\ntime elapsed for the program in ms ", elapsed_time*1000)
+print("\nmax_dictionary:", max_dictionary)
+print("compute_global_prob:", compute_global_prob(max_dictionary))
+# plt.show()
+print("\nlambda_min_dict=", lambda_min_dict)
+print("lambda_max_dict=", lambda_max_dict)
+print()
+print("global_prob min:", compute_global_prob(lambda_min_dict))
+print("global_prob_max:", compute_global_prob(lambda_max_dict))
+print()
+
+
+try:
+    print("the best dictionary is ", the_best_dict)
+    print("probability dicit:", compute_global_prob(the_best_dict))
+    print("******************************* success ****************************** ")
+except Exception:
+    print("Exception: ************************** can't find best dictionary ******************************")
