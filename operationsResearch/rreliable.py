@@ -3,6 +3,7 @@ import time
 import matplotlib.pyplot as plt
 import copy
 
+l = [0.001, 0.0008, 0., 0.0001, 0.00001, 0.00000001, 0.1, 0.01]
 
 # ****************** input data *******************
 
@@ -13,8 +14,6 @@ import copy
 # index = N
 # C = 104
 # W = 100
-
-l = [0.001, 0.0008, 0., 0.0001, 0.00001, 0.00000001, 0.1, 0.01]
 
 p = np.array([0.9, 0.85, 0.88, 0.75, 0.9, 0.8], dtype=float)
 weight = np.array([4, 8, 7, 3, 5, 3], dtype=int)
@@ -46,14 +45,11 @@ def compute_global_prob(dictionary):
     return return_dict 
 
 
-
 def func(index, W, m, __lambda__):
     m_arr = np.array([])
     arr = np.array([], dtype=float)
-
     global debug_index
     if index == 0:
-
         for i in range(int((W)/weight[index])+1):  # W/wi
             arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*cost[index]))
         m = np.append(m, np.argmax(arr))  # arr comes with none so you should continue in line 72
@@ -78,9 +74,7 @@ def func(index, W, m, __lambda__):
         dictionary = {"arr_max": np.max(arr),
                       "m": m_arr[np.argmax(arr)]["m"],#  
                       "lambda": __lambda__}
-
         return dictionary
-
 
 boolean = True
 
