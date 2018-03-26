@@ -12,7 +12,7 @@ index = N
 C = 104
 W = 100
 
-l = [0.001]# , 0.000001, 1, 0.00001, 2, 0.001, 0.01]
+l = [0.001, 0.0008]# , 0.000001, 1, 0.00001, 2, 0.001, 0.01]
 
 # p = np.array([0.88, 0.88, 0.88, 0.88, 0.88, 0.88], dtype=float)
 # weight = np.array([7, 7, 7, 7, 7, 7], dtype=int)
@@ -48,8 +48,10 @@ def compute_global_prob(dictionary):
     return return_dict 
 
 
+
 def func(index, W, m):
     global __lambda__
+    debug_arr = np.array([])
     arr = np.array([], dtype=float)
 
     global debug_index
@@ -74,27 +76,12 @@ def func(index, W, m):
             m = np.append(m, i)
             wm = i*weight[index]  # MN CN
             dictionary = func(index-1, W-wm, m)
-            '''
-            if index == 4:
-                print(index)
-                print(compute_global_prob(dictionary))
-            '''
-            arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*cost[index])*dictionary["arr_max"])
-            print(dictionary["m"])
-            print("index:", index)
-            print("arrmax:", np.max(arr))
-            print(arr)
-            computed = compute_global_prob(dictionary)
-            if boolean:
-                boolean = False
-                max_dictionary = copy.deepcopy(dictionary)
-            if compute_global_prob(max_dictionary)['prob'] < computed['prob']:# and computed['cm'] <= 132:
-                max_dictionary = copy.deepcopy(dictionary)
-                # print(compute_global_prob(max_dictionary))
+            arr = np.append(arr, prob(p[index], i) * np.exp(-__lambda__*i*cost[index])*dictionary["arr_max"])
             m = m[:-1]
-        
-        
-        m = dictionary["m"]
+            debug_arr = np.append(debug_arr, dictionary)
+
+        m = debug_arr[np.argmax(arr)]["m"]#dictionary["m"]
+        print(m)
         m = m[:-1]
         m = np.append(m, np.argmax(arr))
         dictionary = {"arr_max": np.max(arr),
@@ -113,8 +100,9 @@ for __lambda__ in l:# np.arange(0.00091, 0.00092 , 0.00001):  # for my problem
     start_time = time.time()
     print("-----------------------------------------------------------------------")
     global_dictionary = func(index-1, W, m)  ######
+    print("dict:", global_dictionary)
     print("global:", compute_global_prob(global_dictionary))        
-    print("maxdic:", compute_global_prob(max_dictionary))
+    # print("maxdic:", compute_global_prob(max_dictionary))
     boolean = True
     elapsed_time = time.time()-start_time
     print("time elapsed for the program in ms ", elapsed_time*1000)
@@ -126,3 +114,8 @@ print("W:", W)
 print("C:", C)
 print("cost:", cost)
 print("weight:", weight)
+'''
+debug_arr = debug_arr.reshape((15,N))
+
+print("debug_arr:", debug_arr)
+'''
