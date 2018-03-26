@@ -12,7 +12,7 @@ index = N
 C = 104
 W = 100
 
-l = [0.001, 0.0008]# , 0.000001, 1, 0.00001, 2, 0.001, 0.01]
+l = [0.001, 0.0008, 0.000001, 0.0001, 0.00001, 0.00000001, 0.1, 0.01]
 
 # p = np.array([0.88, 0.88, 0.88, 0.88, 0.88, 0.88], dtype=float)
 # weight = np.array([7, 7, 7, 7, 7, 7], dtype=int)
@@ -51,43 +51,36 @@ def compute_global_prob(dictionary):
 
 def func(index, W, m):
     global __lambda__
-    debug_arr = np.array([])
+    m_arr = np.array([])
     arr = np.array([], dtype=float)
 
     global debug_index
-    # print("******************************index", index, "***************************:")
-    global max_dictionary
-    global boolean
     if index == 0:
+
         for i in range(int((W)/weight[index])+1):  # W/wi
             arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*cost[index]))
-            
         m = np.append(m, np.argmax(arr))  # arr comes with none so you should continue in line 72
         dictionary = {
                 "arr_max": np.max(arr),  # F(index)(C) 
                 "m": m, 
                 "lambda": __lambda__
                 }
-        debug_index += 1
+        # print(str(dictionary["m"]) + str(dictionary["arr_max"]))
 
         return dictionary
     else:
         for i in range(int((W)/weight[index]+1)):  # mj = C/cj # +1 ================================================================
             m = np.append(m, i)
-            wm = i*weight[index]  # MN CN
-            dictionary = func(index-1, W-wm, m)
-            arr = np.append(arr, prob(p[index], i) * np.exp(-__lambda__*i*cost[index])*dictionary["arr_max"])
-            m = m[:-1]
-            debug_arr = np.append(debug_arr, dictionary)
 
-        m = debug_arr[np.argmax(arr)]["m"]#dictionary["m"]
-        print(m)
-        m = m[:-1]
-        m = np.append(m, np.argmax(arr))
+            dictionary = func(index-1, W-i*weight[index], m)
+            arr = np.append(arr, prob(p[index], i) * np.exp(-__lambda__*i*cost[index])*dictionary["arr_max"])
+
+            m = m[:-1]
+            m_arr = np.append(m_arr, dictionary)
+
         dictionary = {"arr_max": np.max(arr),
-                      "m": m,  
+                      "m": m_arr[np.argmax(arr)]["m"],#  
                       "lambda": __lambda__}
-        debug_index += 1
 
         return dictionary
 
@@ -96,7 +89,7 @@ boolean = True
 max_dictionary = {}
 
 global_dictionary = {}
-for __lambda__ in l:# np.arange(0.00091, 0.00092 , 0.00001):  # for my problem
+for __lambda__ in l: # np.arange(0.001, 0.0011 , 0.00001):  # for my problem
     start_time = time.time()
     print("-----------------------------------------------------------------------")
     global_dictionary = func(index-1, W, m)  ######
