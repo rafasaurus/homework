@@ -85,7 +85,7 @@ for __lambda__ in np.arange(0.0001, 0.0004 , 0.00001):  # for my problem
     start_time = time.time()
     print("-----------------------------------------------------------------------")
     global_dictionary = func(index-1, W, m, __lambda__)  ######
-    print("dict:", global_dictionary)
+    # print("dict:", global_dictionary)
     print("global:", compute_global_prob(global_dictionary))        
     boolean = True
     elapsed_time = time.time()-start_time
