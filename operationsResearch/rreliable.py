@@ -35,6 +35,7 @@ def fixed_left_edge_chord(leftLambda, __lambda__, iterations):  #fixed with left
 
         lambdaf_dict = compute_global_prob(func(index-1, W, m, __lambda__))
         print("lambda:", __lambda__ , "\ndict", lambdaf_dict) 
+        # lambdaf_dict["lambda"] = round(lambdaf_dict["lambda"],5)
         lambdaf = lambdaf_dict["cm"]-C
         boolean = True
         
@@ -43,6 +44,7 @@ def fixed_left_edge_chord(leftLambda, __lambda__, iterations):  #fixed with left
             
 
         lambdaf_left_dict = compute_global_prob(func(index-1, W, m, leftLambda))
+        # lambdaf_left_dict["lambda"] = round(lambdaf_dict["lambda"],5)
         lambdaf_left = lambdaf_left_dict["cm"]-C
         boolean = True
 
@@ -117,7 +119,7 @@ for __lambda__ in np.arange(0.0001, 0.0004 , 0.00001):  # for my problem
     print("time elapsed for the program in ms ", elapsed_time*1000)
 '''
 best_dict = fixed_left_edge_chord(leftLambda = 0.00001, __lambda__ = 0.000015, iterations = 10)
-
+best_dict["lambda"] = round(best_dict["lambda"], 5)
 print("\n\n\n\n***************** found the best labmda dict **********************\n\n")
 print("the best dict: ", best_dict)
 
