@@ -26,8 +26,8 @@ W = 120
 # *************************************************
 def fixed_left_edge_chord(leftLambda, __lambda__, iterations):  #fixed with left edge chord method "quasi-Newton method" 167 Simonyan
     global boolean
-    global plot_prob_dict
-    global plot_lambda_dict
+    global plot_prob_arr
+    global plot_index_arr
     global plot_cm
     local_boolean = False
     max_probability = 0
@@ -46,13 +46,9 @@ def fixed_left_edge_chord(leftLambda, __lambda__, iterations):  #fixed with left
         plot_cm = np.append(plot_cm, lambdaf)
         boolean = True
 
-
-
-        # plot_lambda_dict = np.append(plot_lambda_dict, __lambda__)
-        plot_lambda_dict = np.append(plot_lambda_dict, __iter__)
-        plot_prob_dict = np.append(plot_prob_dict, lambdaf_dict["prob"])
+        plot_index_arr = np.append(plot_index_arr, __iter__)
+        plot_prob_arr = np.append(plot_prob_arr, lambdaf_dict["prob"])
         lambdaf_left_dict = compute_global_prob(func(index-1, W, m, leftLambda))
-        # lambdaf_left_dict["lambda"] = round(lambdaf_dict["lambda"],5)
         lambdaf_left = lambdaf_left_dict["cm"]-C
         boolean = True
         
@@ -66,7 +62,6 @@ def fixed_left_edge_chord(leftLambda, __lambda__, iterations):  #fixed with left
         if abs(lambdaf) <= (min(cost)):
             local_boolean = True
         if last_labmda > __lambda__ and local_boolean:
-            print("0000000000000000", lambdaf_dict)
             return lambdaf_dict
 
 def prob(p, m):
@@ -124,8 +119,8 @@ boolean = True
 global_dictionary = {}
 m = np.array([], dtype=int)
 
-plot_prob_dict = np.array([])
-plot_lambda_dict = np.array([])
+plot_prob_arr = np.array([])
+plot_index_arr = np.array([])
 plot_cm = np.array([])
 '''
 for __lambda__ in np.arange(0.00015, 0.00027 , 0.00001):  # for my problem
@@ -140,7 +135,7 @@ for __lambda__ in np.arange(0.00015, 0.00027 , 0.00001):  # for my problem
     print("time elapsed for the program in ms ", elapsed_time*1000)
 '''
 ######### best_dict["lambda"] = round(best_dict["lambda"], 5)
-best_dict = fixed_left_edge_chord(leftLambda = 0.0001, __lambda__ = 0.0002, iterations = 15)
+best_dict = fixed_left_edge_chord(leftLambda = 0.0001, __lambda__ = 0.00002, iterations = 15)
 print("\n\n\n\n***************** found the best labmda dict **********************\n\n")
 print("the best dict: ", best_dict)
 
@@ -152,11 +147,11 @@ plt.subplot(122)
 plt.title("prob - lambda")
 plt.xlabel('labmda')
 plt.ylabel('probability')
-plt.scatter(plot_lambda_dict, plot_prob_dict)
+plt.plot(plot_index_arr, plot_prob_arr)
 
 plt.subplot(121)
 plt.title("cm")
 plt.ylabel('C-cm')
 plt.xlabel('lambda')
-plt.scatter(plot_lambda_dict, plot_cm)
+plt.plot(plot_index_arr, plot_cm)
 plt.show()
