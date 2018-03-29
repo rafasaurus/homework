@@ -1,0 +1,65 @@
+-----------------------------------------------------------------------
+iteration number: 0
+lambda: 7e-05 
+dict {'cm': 168, 'm': array([4, 3, 5, 3, 4, 3]), 'prob': 0.99397368654532536, 'wm': 113, 'lambda': 7e-05}
+next labmda: 0.000137058823529
+time elapsed for the program in ms  30737.806797027588
+4
+38
+False
+next lambda 0.000137058823529
+lambdalast 7e-05
+lambdanext < lambdalast: False
+-----------------------------------------------------------------------
+iteration number: 1
+lambda: 0.000137058823529 
+dict {'cm': 141, 'm': array([4, 3, 4, 2, 3, 3]), 'prob': 0.98216996507215359, 'wm': 98, 'lambda': 0.00013705882352941178}
+next labmda: 0.000177823529412
+time elapsed for the program in ms  28046.441316604614
+4
+11
+False
+next lambda 0.000177823529412
+lambdalast 0.000137058823529
+lambdanext < lambdalast: False
+-----------------------------------------------------------------------
+iteration number: 2
+lambda: 0.000177823529412 
+dict {'cm': 137, 'm': array([3, 3, 4, 2, 3, 3]), 'prob': 0.98208156889133524, 'wm': 94, 'lambda': 0.00017782352941176472}
+next labmda: 0.000216735294118
+time elapsed for the program in ms  28064.194202423096
+4
+7
+False
+next lambda 0.000216735294118
+lambdalast 0.000177823529412
+lambdanext < lambdalast: False
+-----------------------------------------------------------------------
+iteration number: 3
+lambda: 0.000216735294118 
+dict {'cm': 131, 'm': array([3, 2, 4, 2, 3, 3]), 'prob': 0.97926279538649141, 'wm': 86, 'lambda': 0.00021673529411764708}
+next labmda: 0.000222572058824
+time elapsed for the program in ms  27971.42267227173
+4
+1
+True
+next lambda 0.000222572058824
+lambdalast 0.000216735294118
+lambdanext < lambdalast: False
+lambda: 0.000222572058824 
+dict {'cm': 131, 'm': array([3, 2, 4, 2, 3, 3]), 'prob': 0.9792627953864913, 'wm': 86, 'lambda': 0.00022257205882352944}
+
+
+
+
+***************** found the best labmda dict **********************
+
+
+the best dict:  {'cm': 131, 'm': array([3, 2, 4, 2, 3, 3]), 'prob': 0.9792627953864913, 'wm': 86, 'lambda': 0.00022257205882352944}
+
+
+
+W: 120
+C: 130  +/- 4
+cost: [ 4  6 12 10  5  8]
+weight: [4 8 7 3 5 3]
