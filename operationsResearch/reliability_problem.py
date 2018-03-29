@@ -25,6 +25,11 @@ W = 120
 
 # *************************************************
 def fixed_left_edge_chord(leftLambda, __lambda__, iterations):  #fixed with left edge chord method "quasi-Newton method" 167 Simonyan
+    """
+    finds the best lambda, and the best dictionary for dynamic programming problem,
+    using fixed left edge chord method 
+    :return: returns the best lambda dictionary
+    """
     global boolean
     global plot_prob_arr
     global plot_index_arr
@@ -34,50 +39,43 @@ def fixed_left_edge_chord(leftLambda, __lambda__, iterations):  #fixed with left
     max_probability = 0
     for __iter__ in range(iterations):
         start_time = time.time()
-        print("-----------------------------------------------------------------------")
-        print("iteration number:", __iter__)
+        print("\n******** iteration number:", __iter__,"***********")
         lambdaf_dict = compute_global_prob(func(index-1, W, m, __lambda__))
-        print("lambda:", __lambda__ , "\ndict", lambdaf_dict) 
-        # lambdaf_dict["lambda"] = round(lambdaf_dict["lambda"],5)
+        print("\tlambda:", __lambda__ , "\n\tdict", lambdaf_dict) 
         lambdaf = lambdaf_dict["cm"]-C
-        plot_cm = np.append(plot_cm, lambdaf)
         boolean = True
 
+        # gathering plot information
+        plot_cm = np.append(plot_cm, lambdaf)
         plot_index_arr = np.append(plot_index_arr, __iter__)
         plot_prob_arr = np.append(plot_prob_arr, lambdaf_dict["prob"])
         plot_lambda_arr = np.append(plot_lambda_arr, __lambda__)
+
         lambdaf_left_dict = compute_global_prob(func(index-1, W, m, leftLambda))
         lambdaf_left = lambdaf_left_dict["cm"]-C
         boolean = True
         
         last_labmda = copy.copy(__lambda__)
+        # calulating next lambda
         __lambda__ = __lambda__ - ((leftLambda - __lambda__) * lambdaf) / (lambdaf_left - lambdaf) #####
-        print("next labmda:", __lambda__)
+        print("\tnext labmda:", __lambda__)
         elapsed_time = time.time()-start_time
-        print("time elapsed for the program in ms ", elapsed_time*1000)
+        print("\t\ttime elapsed for the program in ms ", elapsed_time*1000)
 
         # checks if the probability is maximum at C-sum(cm) condition, not that important
         if abs(lambdaf) <= (min(cost)):
             local_boolean = True
         else :
             local_boolean = False
-        print(min(cost))
-        print(lambdaf)
-        print(local_boolean)
-        print("next lambda", __lambda__)
-        print("lambdalast", last_labmda)
-        print("lambdanext < lambdalast:", bool(__lambda__< last_labmda))
         if __lambda__ > last_labmda and local_boolean:
             
             __iter__ += 1
-
             lambdaf_dict = compute_global_prob(func(index-1, W, m, __lambda__))
-            print("lambda:", __lambda__ , "\ndict", lambdaf_dict) 
-            # lambdaf_dict["lambda"] = round(lambdaf_dict["lambda"],5)
             lambdaf = lambdaf_dict["cm"]-C
             plot_cm = np.append(plot_cm, lambdaf)
             boolean = True
-            
+
+            # gathering ploting data 
             plot_index_arr = np.append(plot_index_arr, __iter__)
             plot_prob_arr = np.append(plot_prob_arr, lambdaf_dict["prob"])
             plot_lambda_arr = np.append(plot_lambda_arr, __lambda__)
@@ -107,6 +105,9 @@ def compute_global_prob(dictionary):
 
 
 def func(index, W, m, __lambda__):
+    """
+    Bellman recurrent function
+    """
     m_arr = np.array([])
     arr = np.array([], dtype=float)
     global debug_index
@@ -158,7 +159,7 @@ for __lambda__ in np.arange(0.00015, 0.00027 , 0.00001):  # for my problem
 '''
 ######### best_dict["lambda"] = round(best_dict["lambda"], 5)
 best_dict = fixed_left_edge_chord(leftLambda = 0.0001, __lambda__ = 0.00007, iterations = 15)
-print("\n\n\n\n***************** found the best labmda dict **********************\n\n")
+print("\n\n\n\n***************** found the best labmda dict ******************\n\n")
 print("the best dict: ", best_dict)
 
 print("\n\n\nW:", W)
@@ -169,13 +170,13 @@ print("weight:", weight)
 plt.subplot(122)
 plt.title("probability dependence with iterations of lambda")
 plt.xlabel('iterations')
-plt.xticks(plot_index_arr, plot_lambda_arr)
+plt.xticks(plot_index_arr, np.round(plot_lambda_arr,6))
 plt.ylabel('probability')
 plt.plot(plot_index_arr, plot_prob_arr)
 
 plt.subplot(121)
 plt.title("C-cm dependence with iterations of lambda")
-plt.xticks(plot_index_arr, plot_lambda_arr)
+plt.xticks(plot_index_arr, np.round(plot_lambda_arr,6))
 plt.xlabel('iterations')
 plt.ylabel('C-cm')
 plt.plot(plot_index_arr, plot_cm)
