@@ -14,7 +14,7 @@ l = [0.001, 0.0008, 0., 0.0001, 0.00001, 0.00000001, 0.1, 0.01]
 # index = N
 # C = 104
 # W = 100
-
+'''
 p = np.array([0.9, 0.85, 0.88, 0.75, 0.9, 0.8], dtype=float)
 weight = np.array([4, 8, 7, 3, 5, 3], dtype=int)
 cost = np.array([4, 6, 12, 10, 5, 8], dtype=int)
@@ -22,7 +22,14 @@ N = 6
 index = N
 C = 130
 W = 120
-
+'''
+p = np.array([0.9, 0.85, 0.88, 0.75, 0.9, 0.8, 0.75], dtype=float)
+weight = np.array([4, 8, 7, 3, 5, 3, 6], dtype=int)
+cost = np.array([4, 6, 12, 10, 5, 8, 10], dtype=int)
+N = 7
+index = N
+C = 120
+W = 100
 # *************************************************
 def fixed_left_edge_chord(leftLambda, __lambda__, iterations):  #fixed with left edge chord method "quasi-Newton method" 167 Simonyan
     """

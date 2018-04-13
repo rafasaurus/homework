@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-### randoms_mixed = np.random.rand(1, pow(2, k-2))
+# randoms_mixed = np.random.rand(1, pow(2, k-2))
 np.random.seed(sum(map(ord, "distributions")))
 sns.set(color_codes=True)
 __bins__ = 50
@@ -56,12 +56,11 @@ def __randn__(randoms_mixed, expectaion, sigma):  # normal distribution rand
     return randoms_normal
 
 
-def erlang_rand(randoms_mixed):
+def erlang_rand(randoms_mixed, erlang_alpha):
     length = int(randoms_mixed.shape[0]/12)
     randoms_mixed = randoms_mixed[:length*12]
     randoms_mixed = randoms_mixed.reshape((length, 12))
     randoms_erlang = np.array([])
-    erlang_alpha = 0.5
     for randoms_mixed_i in randoms_mixed:
         randoms_erlang = np.append(randoms_erlang, -1/erlang_alpha * np.log(np.prod(randoms_mixed_i))) 
 
@@ -70,30 +69,38 @@ def erlang_rand(randoms_mixed):
     plt.ylabel('P(X)')
     sns.distplot(randoms_erlang, bins=__bins__)
     return randoms_erlang
-miu = 10  #  for mixed version
-n0 = 12947 
+#exponenent dist params
 exponent_dist_lambda = 0.4
+#poisson params
 poisson_lambda = 3
+#congruent params
 t = 2
 __lambda__ = 8*t+3
-
 k = 14 
 m = pow(2, k)
 last_n = 1
 last_n_mixed = 1
+miu = 10  #  for mixed version
+n0 = 12947 
+# normal distribution params
 sigma = 1
 expectaion = 1
-
+# veibul distribution params
 veibul_alpha = 1
 veibul_beta = 1
-S = 1
-J = 0
+# erlang params
+erlang_alpha = 0.5
+
+# binomial distribution params
 N_experiments_binomial = 10
 P_binomial = 0.9
 
 poisson_randoms = np.array([])
 randoms = np.array([])
-randoms_mixed = np.array([])
+randoms_mixed = np.array([]) #
+
+S = 1
+J = 0
 for i in range(pow(2, k-2)):
     n = (last_n * __lambda__) % m
     n_mixed = (last_n_mixed * __lambda__ + miu) % m
@@ -147,7 +154,7 @@ plt.title("veibul")
 sns.distplot(veibul_dist, bins=__bins__)
 print("\tveibul dist:", veibul_dist)
 
-randoms_erlang_dist = erlang_rand(randoms_mixed)
+randoms_erlang_dist = erlang_rand(randoms_mixed, erlang_alpha)
 print("\trandoms_erlang:", randoms_erlang_dist)
 randoms_normal_log = __randn__log__(randoms_mixed, expectaion, sigma)
 print("\trandom_normal_log:", randoms_normal_log)
