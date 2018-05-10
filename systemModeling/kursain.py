@@ -36,11 +36,11 @@ T = 600 # in minutes
 Number_of_Servers = 4 # varsavir
 T_wait = np.array([])
 Server_State = np.array([True, True, True, True],dtype = bool)
+Server_Times = np.array([0, 0, 0, 0], dtype = int)
+
 T_Current = np.array([])
 T_Free = np.array([0, 0, 0, 0])
 T_input = np.array([])
-# T_Serve = get_next_exponential(N_Server) #get_exponential(randoms, exponent_dist_lambda = 0.8)[:4]
-# print("T_serve", T_Serve)
 N_served = np.array([])
 N_rejected = np.array([])
 Serve_Time = np.array([])
@@ -59,12 +59,24 @@ Queue_Length = 3 # person
 
 
 T_Queue  = get_next_exponential(Number_of_Servers) # սպասարկման ժամանակ
+T_Queue = np.around(T_Queue)
 print("T_queue:", T_Queue)
 print()
 T_Serve = get_T_input_with_poisson(Number_of_Servers)
 print("T_Serve:", T_Serve)
 
-for T_Serve_i in T_Serve:
+for T_Serve_i, T_Queue_i in zip(T_Serve, T_Queue):
+    # check server times if they exit T = 600 limit 
     for i in range(Server_State.shape[0]):
-        if Server_State[i] == True:
-            print(Server_State[i])
+        if Server_Times[i] >= T:
+            Server_State[i] = False
+            print("out of time for", i, "-th Server")
+            
+        if T_Queue_i > Server_Times[i]:
+            Server_Times[i]+=T_Serve_i
+            continue
+    print("T_Serve_Timeline:", Server_Times)
+    #for i in range(Server_State.shape[0]): # 4 varsavirneri state
+        #if Server_State[i] == True:
+            #if T_Queue_i+T_Serve_i > 
+        
