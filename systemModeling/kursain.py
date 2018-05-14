@@ -57,49 +57,66 @@ Queue_Length = 3 # person
 
 T_Serve_Time  = get_next_exponential(Number_of_Servers) #
 T_Serve_Time = np.around(T_Serve_Time)
-Queue = np.array([])
+Queue = np.array([],dtype = "int")
 Queue_Serve_Time = np.array([])
 
 print("T_Serve_Time:", T_Serve_Time)
 print()
 T_Serve = get_T_input_with_poisson(Number_of_Servers)
+T_Serve *=2
 print("T_Serve:", T_Serve)
 
 Served_Objects = np.array([])
 Rejected_Objects = np.array([])
 index = 0
-__Break__ = False
+
 for T_Serve_j, T_Serve_Time_j in zip(T_Serve, T_Serve_Time):
     # check server times if they exit T = 600 limit 
     Reject_boolean_checker = True
     Queue_boolean_checker = True
-
-    if Queue.shape[0] != 0:
+    print("server_times:", Server_Times)
+    print("Queue:", Queue) 
+    print("Served_Objects:",Served_Objects)
+    if Queue.shape[0] > 0:
+        print("***********************")
         min_Server_Times = min(Server_Times)
         min_Server_Times_index = np.argmin(Server_Times)
         if (min_Server_Times + T_Serve_Time[Queue[0]]) <=T:
             Server_Times[min_Server_Times_index] += T_Serve_Time[Queue[0]]
+            Served_Objects = np.append(Served_Objects, Queue[0])
             Queue = Queue[1:]
-
-    for i in range(Number_of_Servers):
-        #if Server_Times[i] >= T:
-        #    Server_State[i] = False
-        #    print("out of time for", i, "-th Server")
-
-        if T_Serve_j > Server_Times[i]:
-            Queue_boolean_checker = False
-            Served_Objects = np.append(Served_Objects, index)
-            Server_Times[i]+=T_Serve_Time_j
+            Queue = np.append(Queue, index)
+        if T_Serve_Time[Queue[0]]+min_Server_Times > T:
             break
-        #print("T_Serve_Timeline:", Server_Times)
-    #if Reject_boolean_checker:
-    if Queue_boolean_checker == True and Queue.shape[0]<3:
-        Queue = np.append(Queue, index)
+    else:
+        min_Server_Times = min(Server_Times)
+        min_Server_Times_index = np.argmin(Server_Times)
+        if (T_Serve_j+T_Serve_Time_j) <=T:
+            if T_Serve_j > min_Server_Times and Queue.shape == 0:
+                # Queue_boolean_checker = False
+                Server_Times[min_Server_Times_index] += T_Serve_Time[index]
+                Served_Objects = np.append(Served_Objects, index)
+            elif Queue.shape[0]<3:
+                Queue = np.append(Queue, index)
+        else:
+            Rejected_Objects = np.append(Rejected_Objects, index)
     index+=1
-    print("Queue:", Queue) 
-    #for i in range(Server_State.shape[0]): # 4 varsavirneri state
-        #if Server_State[i] == True:
-            #if T_Serve_Time_i+T_Serve_i > 
-label .breakall
+        #for i in range(Number_of_Servers):
+        #    #if Server_Times[i] >= T:
+        #    #    Server_State[i] = False
+        #    #    print("out of time for", i, "-th Server")
+        #    if T_Serve_j > Server_Times[i] and T_Serve_Time_j+Server_Times[i] <= T:
+        #        Queue_boolean_checker = False
+        #        Served_Objects = np.append(Served_Objects, index)
+        #        Server_Times[i]+=T_Serve_Time_j
+        #        break
+        #    #print("T_Serve_Timeline:", Server_Times)
+        #if Reject_boolean_checker:
+        #               **********************************************************************************************
+        #if Queue_boolean_checker == False and Queue.shape[0]<3:
+        #    Queue = np.append(Queue, index)
+        #for i in range(Server_State.shape[0]): # 4 varsavirneri state
+            #if Server_State[i] == True:
+                #if T_Serve_Time_i+T_Serve_i > 
 print("\nServed_Objects:", Served_Objects) 
 print("Rejected_Objects:", Rejected_Objects)
