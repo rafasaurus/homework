@@ -59,11 +59,10 @@ T_Serve_Time  = get_next_exponential(Number_of_Servers) #
 T_Serve_Time = np.around(T_Serve_Time)
 Queue = np.array([],dtype = "int")
 Queue_Serve_Time = np.array([])
-
+T_Serve_Time /=2
 print("T_Serve_Time:", T_Serve_Time)
 print()
 T_Serve = get_T_input_with_poisson(Number_of_Servers)
-T_Serve *=2
 print("T_Serve:", T_Serve)
 
 Served_Objects = np.array([])
@@ -72,34 +71,51 @@ index = 0
 
 for T_Serve_j, T_Serve_Time_j in zip(T_Serve, T_Serve_Time):
     # check server times if they exit T = 600 limit 
-    Reject_boolean_checker = True
-    Queue_boolean_checker = True
-    print("server_times:", Server_Times)
-    print("Queue:", Queue) 
-    print("Served_Objects:",Served_Objects)
+    print("\tnext timer:", T_Serve_Time_j)
+    print("\tnext_T_Serve_j:", T_Serve_j)
     if Queue.shape[0] > 0:
         print("***********************")
         min_Server_Times = min(Server_Times)
         min_Server_Times_index = np.argmin(Server_Times)
+        
         if (min_Server_Times + T_Serve_Time[Queue[0]]) <=T:
             Server_Times[min_Server_Times_index] += T_Serve_Time[Queue[0]]
+            print("11111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
             Served_Objects = np.append(Served_Objects, Queue[0])
             Queue = Queue[1:]
+            sum_queue_times = 0
+        #else:
+        #    Rejected_Objects = np.append(Rejected_Objects, Queue[0])
+        #    Queue = Queue[1:]
+        
+        min_Server_Times = min(Server_Times)
+        min_Server_Times_index = np.argmin(Server_Times)
+
+        if min_Server_Times + T_Serve_Time_j <=T and Queue.shape[0]<Queue_Length-1:
             Queue = np.append(Queue, index)
-        if T_Serve_Time[Queue[0]]+min_Server_Times > T:
-            break
+        else:
+            #Queue = Queue[1:]
+            Rejected_Objects = np.append(Rejected_Objects, index)
+
+       #if Queue.shape[0]>0:    
+       #     if T_Serve_Time[Queue[0]]+min_Server_Times > T:
+       #         break
     else:
         min_Server_Times = min(Server_Times)
         min_Server_Times_index = np.argmin(Server_Times)
         if (T_Serve_j+T_Serve_Time_j) <=T:
-            if T_Serve_j > min_Server_Times and Queue.shape == 0:
-                # Queue_boolean_checker = False
-                Server_Times[min_Server_Times_index] += T_Serve_Time[index]
+            print("debug&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+            if T_Serve_j >= min_Server_Times and Queue.shape[0] == 0:
+                Server_Times[min_Server_Times_index] = T_Serve_j + T_Serve_Time_j
                 Served_Objects = np.append(Served_Objects, index)
             elif Queue.shape[0]<3:
                 Queue = np.append(Queue, index)
         else:
             Rejected_Objects = np.append(Rejected_Objects, index)
+    print("server_times:", Server_Times)
+    print("Queue:", Queue) 
+    print("Served_Objects:",Served_Objects)
+    print("Rejected_Objects:", Rejected_Objects)
     index+=1
         #for i in range(Number_of_Servers):
         #    #if Server_Times[i] >= T:
