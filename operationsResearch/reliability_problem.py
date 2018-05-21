@@ -22,15 +22,22 @@ N = 6
 index = 0
 C = 130
 W = 120
+# p = p[::-1]
+# weight = weight[::-1]
+# cost = cost[::-1]
 
-#__lambda__ = 0.00002
-#p = np.array([0.9, 0.85, 0.88, 0.75, 0.9, 0.8, 0.75], dtype=float)
-#weight = np.array([4, 8, 7, 3, 5, 3, 6], dtype=int)
-#cost = np.array([4, 6, 12, 10, 5, 8, 10], dtype=int)
-#index = 0
-#N = 7
-#C = 120
-#W = 100
+
+# __lambda__ = 0.00002
+# p = np.array([0.9, 0.85, 0.88, 0.75, 0.9, 0.8, 0.75], dtype=float)
+# weight = np.array([4, 8, 7, 3, 5, 3, 6], dtype=int)
+# cost = np.array([4, 6, 12, 10, 5, 8, 10], dtype=int)
+# index = 0
+# N = 7
+# C = 120
+# W = 100
+# p = p[::-1]
+# weight = weight[::-1]
+# cost = cost[::-1]
 # *************************************************
 '''
 def fixed_left_edge_chord(leftLambda, __lambda__, iterations):  #fixed with left edge chord method "quasi-Newton method" 167 Simonyan
@@ -117,46 +124,45 @@ def func(index, W, m, __lambda__, arr_max):
     """
     Bellman recurrent function
     """
-    m_arr = np.array([])
+    max_arr = np.array([])
     arr = np.array([], dtype=float)
     global debug_index
     if index == 0:
         for i in range(int((W)/weight[index])+1):  # W/wi
-
-            arr = np.append(arr, prob(p[index], i)*np.exp(-__lambda__*i*cost[index]))
-            print((prob(p[index],i)),"__", np.exp(-__lambda__*i*cost[index]),"=",prob(p[index], i)*np.exp(-__lambda__*i*cost[index]))
+            arr = np.append( arr, prob(p[index], i)*np.exp(-__lambda__*i*cost[index]) )
+            max_arr = np.append(max_arr, np.max(arr))
+            #print(max_arr)
+            #print((prob(p[index],i)),"__", np.exp(-__lambda__*i*cost[index]),"=",prob(p[index], i)*np.exp(-__lambda__*i*cost[index]))
         print("\n\t\tTABLE:", index)
-        print(arr.T)
-        print("max_table:", np.max(arr))
-        print("max_m:", np.argmax(arr))
-        m = np.append(m, np.argmax(arr))  # arr comes with none so you should continue in line 72
-        arr_max = np.max(arr)
-        dictionary = func(index+1, W-weight[index]*np.argmax(arr), m, __lambda__, arr_max)
+        print(max_arr.T)
+        print("max_table:", np.max(max_arr))
+        print("max_m:", np.argmax(max_arr))
+        m = np.append(m, np.argmax(max_arr))
+        arr_max = np.max(max_arr)
+        dictionary = func(index+1, W-weight[index]*np.argmax(max_arr), m, __lambda__, arr_max)
         return dictionary
     else:
         for i in range(int((W)/weight[index]+1)):  # mj = C/cj #=
-            #m = np.append(m, i)
             #dictionary = func(index-1, W-i*weight[index], m, __lambda__)
-            arr = np.append(arr, prob(p[index], i) * np.exp(-__lambda__*i*cost[index])*arr_max)
-            print((prob(p[index],i)),"__", np.exp(-__lambda__*i*cost[index])*arr_max,"=",prob(p[index], i) * np.exp(-__lambda__*i*cost[index])*arr_max)
+            arr = np.append( arr, prob(p[index], i) * np.exp(-__lambda__*i*cost[index])*arr_max )
+            max_arr = np.append(max_arr, np.max(arr))
 
-            #m = m[:-1]
-            #m_arr = np.append(m_arr, dictionary)
-        print("\n\t\tTABLE:", index-1, "__", W)
-        print(arr)
-        print("max_table:", np.max(arr))
-        print("max_m:", np.argmax(arr))
-        arr_max = np.max(arr)
-        m=np.append(m, np.argmax(arr))
+            #print((prob(p[index],i)),"__", np.exp(-__lambda__*i*cost[index])*arr_max,"=",prob(p[index], i)*np.exp(-__lambda__*i*cost[index]))
+        print("\n\t\tTABLE:", index)
+        print(max_arr.T)
+        print("max_table:", np.max(max_arr))
+        print("max_m:", np.argmax(max_arr))
+        m = np.append(m, np.argmax(max_arr))
+        arr_max = np.max(max_arr)
         dictionary = {
-                        "arr_max": np.max(arr),
+                        "arr_max": np.max(max_arr),
                         "m": m,  
                         "lambda": __lambda__
                      }
         if index+1 >= N:
             return dictionary
         else:
-            return func(index+1, W-weight[index]*np.argmax(arr), m, __lambda__, arr_max)
+            return func(index+1, W-weight[index]*np.argmax(max_arr), m, __lambda__, arr_max)
 
 boolean = True
 global_dictionary = {}
@@ -166,10 +172,10 @@ m = np.array([], dtype=int)
 arr_max=0 
 
 best_dict = compute_global_prob(func(index, W, m, __lambda__, arr_max))
-print("\n\n\n\n***************** found the best labmda dict ******************\n\n")
-print("the best dict: ", best_dict)
+#print("\n\n\n\n***************** found the best labmda dict ******************\n\n")
+print("\n\nanswer: ", best_dict)
 
-print("\n\n\nW:", W)
+print("\nW:", W)
 print("C:", C, " +/- " + str(min(cost)))
 print("cost:", cost)
 print("weight:", weight)
