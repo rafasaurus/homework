@@ -3,24 +3,23 @@ from congruent import get_congruent_randoms, get_exponential, get_poisson
 import copy
 
 congruent_offset = 0
-__Nmodelling__=2
+__Nmodelling__=100
 exponent_dist_lambda=0.8
-
-N = 100 # pordzarkumneri qan
+Number_of_Servers = 4 # varsavir
+Queue_Length = 3 # person
+N_CLIENTS = 110# pordzarkumneri qan
 T = 600 # in minutes
 
-Number_of_Servers = 3 # varsavir
-Queue_Length = 3 # person
 
 def get_next_exponential(N):
-    randoms = get_congruent_randoms(N0=congruent_offset*2*(1312412)+1)[:100]
-    Exponent = 60 * get_exponential(randoms, exponent_dist_lambda)[:100]
+    randoms = get_congruent_randoms(N0=congruent_offset*2*(1312412)+1)[:N_CLIENTS]
+    Exponent = 60 * get_exponential(randoms, exponent_dist_lambda)[:N_CLIENTS]
     return Exponent
 def get_T_input_with_poisson(N):
     global congruent_offset
     T_input = np.array([])
     T_input = np.append(T_input, 0)
-    Poisson = get_poisson(poisson_lambda = 6, N0=2*(1022123)+1)[:100]
+    Poisson = get_poisson(poisson_lambda = 6, N0=congruent_offset*2*(1022123)+1)[:N_CLIENTS]
     # Poisson = get_poisson(poisson_lambda=6, N0=congruent_offset*(1022123)+1)[:100]
     for i in range(1,Poisson.shape[0]):
         T_input = np.append(T_input, T_input[i-1]+Poisson[i]) 
@@ -37,10 +36,10 @@ def get_T_input_with_poisson(N):
 # plt.scatter(axis, get_poisson(poisson_lambda = 3))
 # sns.distplot(get_poisson(), bins=40)
 # plt.show()
-
-T_Serve_Time_ = get_next_exponential(Number_of_Servers)
+Modelling_Served_N = np.array([])
+Modelling_Rejected_N = np.array([])
 for i in range(__Nmodelling__):
-    T_Serve_Time = T_Serve_Time_# get_next_exponential(Number_of_Servers)
+    T_Serve_Time = get_next_exponential(Number_of_Servers)
     # T_Serve_Time /=2
     T_Serve_Time = np.around(T_Serve_Time)
     # Queue = np.array([], dtype="int")
@@ -51,10 +50,11 @@ for i in range(__Nmodelling__):
                  }
     arr_Queue_dict = np.array([])
     # arr_Queue_dict = np.append(arr_Queue_dict, Queue_dict)
-    print("******T_Serve_Time******:\n", T_Serve_Time)
-    print()
     T_Serve = get_T_input_with_poisson(Number_of_Servers)
-    print("******T_Serve******:\n", T_Serve)
+    # **** print distributions ****
+    # print("******T_Serve******:\n", T_Serve)
+    # print("******T_Serve_Time******:\n", T_Serve_Time)
+    # print()
     index = 0
     Served_Objects = np.array([])
     Rejected_Objects = np.array([])
@@ -132,9 +132,17 @@ for i in range(__Nmodelling__):
                     else:
                         Rejected_Objects = np.append(Rejected_Objects, index)
         index+=1
-    print("\nServed_Objects:", Served_Objects)
-    print("Rejected_Objects:", Rejected_Objects)
-    print("Nnum_Served:", Served_Objects.shape[0])
-    print("Nnum_Rejected:", Rejected_Objects.shape[0])
-    print("total:", Rejected_Objects.shape[0]+Served_Objects.shape[0])
-    print("final_index:", index)
+        if index>= N_CLIENTS/2 and Rejected_Objects[-1]==99 or Served_Objects[-1]==99:
+            break
+
+    # print("\nServed_Objects:", Served_Objects)
+    # print("Rejected_Objects:", Rejected_Objects)
+    # print("Nnum_Served:", Served_Objects.shape[0])
+    # print("Nnum_Rejected:", Rejected_Objects.shape[0])
+    # print("total:", Rejected_Objects.shape[0]+Served_Objects.shape[0])
+    # print("final_index:", index)
+    Modelling_Rejected_N = np.append(Modelling_Rejected_N, Rejected_Objects.shape[0])
+    Modelling_Served_N = np.append(Modelling_Served_N, Served_Objects.shape[0])
+
+print("Modelling_Served_N:", Modelling_Served_N)
+print("Modelling_Rejected_N:", Modelling_Rejected_N)
