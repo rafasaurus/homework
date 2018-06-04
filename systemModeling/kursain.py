@@ -3,14 +3,13 @@ from congruent import get_congruent_randoms, get_exponential, get_poisson
 import copy
 
 congruent_offset = 0
-__Nmodelling__=1
+__Nmodelling__=2
 exponent_dist_lambda=0.8
 
 N = 100 # pordzarkumneri qan
 T = 600 # in minutes
 
 Number_of_Servers = 3 # varsavir
-Server_Times = np.zeros(Number_of_Servers)
 Queue_Length = 3 # person
 
 def get_next_exponential(N):
@@ -39,43 +38,42 @@ def get_T_input_with_poisson(N):
 # sns.distplot(get_poisson(), bins=40)
 # plt.show()
 
+T_Serve_Time_ = get_next_exponential(Number_of_Servers)
 for i in range(__Nmodelling__):
-    T_Serve_Time  = get_next_exponential(Number_of_Servers) #
+    T_Serve_Time = T_Serve_Time_# get_next_exponential(Number_of_Servers)
     # T_Serve_Time /=2
     T_Serve_Time = np.around(T_Serve_Time)
-    Queue = np.array([],dtype = "int")
-    Queue_Serve_Time = np.array([])
+    # Queue = np.array([], dtype="int")
+    # Queue_Serve_Time = np.array([])
     Queue_dict = {
-                            "queue_index":0,
-                            "server_index":0
-                          }
+                     "queue_index": 0,
+                     "server_index": 0
+                 }
     arr_Queue_dict = np.array([])
     # arr_Queue_dict = np.append(arr_Queue_dict, Queue_dict)
-    print("T_Serve_Time:", T_Serve_Time)
+    print("******T_Serve_Time******:\n", T_Serve_Time)
     print()
     T_Serve = get_T_input_with_poisson(Number_of_Servers)
-    print("T_Serve:", T_Serve)
-    
+    print("******T_Serve******:\n", T_Serve)
+    index = 0
     Served_Objects = np.array([])
     Rejected_Objects = np.array([])
-    index = 0
-    
+    Server_Times = np.zeros(Number_of_Servers)
     for T_Serve_j, T_Serve_Time_j in zip(T_Serve, T_Serve_Time):
-        print("\tindex:", index)
-        print("\tnext_Serve_time_j:", T_Serve_Time_j)
-        print("\tnext_T_Serve_j:", T_Serve_j)
-        print("\tserver_times:", Server_Times)
-        print("\t****Queue****\n:", arr_Queue_dict)
-        print("\tServed_Objects:",Served_Objects)
-        print("\tRejected_Objects:", Rejected_Objects)
-
+        # print("\tindex:", index)
+        # print("\tnext_Serve_time_j:", T_Serve_Time_j)
+        # print("\tnext_T_Serve_j:", T_Serve_j)
+        # print("\tserver_times:", Server_Times)
+        # print("\t****Queue****\n:", arr_Queue_dict)
+        # print("\tServed_Objects:", Served_Objects)
+        # print("\tRejected_Objects:", Rejected_Objects)
+        
         # if there is a queue
         if arr_Queue_dict.shape[0] > 0:
             # serve queue clients
-            # cycle through all of queue clients 
-            temp_arr_Queue_dict = arr_Queue_dict.copy()
+            # cycle through all of queue clients
             boolean = True
-            for arr_Queue_dict_i in temp_arr_Queue_dict:
+            for arr_Queue_dict_i in arr_Queue_dict:
                 if T_Serve_j >= Server_Times[arr_Queue_dict_i["server_index"]] and boolean:
                     Server_Times[arr_Queue_dict_i["server_index"]] += T_Serve_Time[arr_Queue_dict_i["queue_index"]]
                     Served_Objects = np.append(Served_Objects, arr_Queue_dict_i["queue_index"])
@@ -83,9 +81,8 @@ for i in range(__Nmodelling__):
                 else:
                     boolean = False
 
-            
-             # serve next client T_SERVE_J
-             # if there's no queue left
+            # serve next client T_SERVE_J
+            # if there's no queue left
             if arr_Queue_dict.shape[0] == 0:
                 for k in range(Number_of_Servers):
                     if T_Serve_j >= Server_Times[k] and T_Serve_j + T_Serve_Time_j <=T:
@@ -97,26 +94,25 @@ for i in range(__Nmodelling__):
                         min_Server_Times_index = np.argmin(Server_Times)
                         if min_Server_Times + T_Serve_Time_j <=T and arr_Queue_dict.shape[0]<Queue_Length:
                             Queue_dict = {
-                                    "queue_index":index,
-                                    "server_index":min_Server_Times_index
-                                  }
+                                            "queue_index": index,
+                                            "server_index": min_Server_Times_index
+                                         }
                             arr_Queue_dict = np.append(arr_Queue_dict, Queue_dict)
                         else:
                             Rejected_Objects = np.append(Rejected_Objects, index)
             # if there's queue left
-            else: 
-                print("**************************debug***********************************************")
+            else:
                 min_Server_Times = min(Server_Times)
                 min_Server_Times_index = np.argmin(Server_Times)
                 if min_Server_Times + T_Serve_Time_j <=T and arr_Queue_dict.shape[0]<Queue_Length:
                     Queue_dict = {
-                            "queue_index":index,
-                            "server_index":min_Server_Times_index
-                          }
+                                    "queue_index": index,
+                                    "server_index": min_Server_Times_index
+                                 }
                     arr_Queue_dict = np.append(arr_Queue_dict, Queue_dict)
                 else:
                     Rejected_Objects = np.append(Rejected_Objects, index)
-            
+           
         # if there is not a queue*******global else*******
         else:
             for k in range(Number_of_Servers):
@@ -136,7 +132,7 @@ for i in range(__Nmodelling__):
                     else:
                         Rejected_Objects = np.append(Rejected_Objects, index)
         index+=1
-    print("\nServed_Objects:", Served_Objects) 
+    print("\nServed_Objects:", Served_Objects)
     print("Rejected_Objects:", Rejected_Objects)
     print("Nnum_Served:", Served_Objects.shape[0])
     print("Nnum_Rejected:", Rejected_Objects.shape[0])

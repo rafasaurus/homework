@@ -18,911 +18,1217 @@ T_Serve: [  0.   7.  10.  14.  16.  22.  28.  33.  40.  45.  48.  53.  64.  69.
 	index: 0
 	next_Serve_time_j: 475.0
 	next_T_Serve_j: 0.0
-	server_times: [0 0 0 0]
-	Queue: []
+	server_times: [0. 0. 0.]
+	****Queue****
+: []
 	Served_Objects: []
 	Rejected_Objects: []
 	index: 1
 	next_Serve_time_j: 253.0
 	next_T_Serve_j: 7.0
-	server_times: [475   0   0   0]
-	Queue: []
+	server_times: [475.   0.   0.]
+	****Queue****
+: []
 	Served_Objects: [0.]
 	Rejected_Objects: []
 	index: 2
 	next_Serve_time_j: 32.0
 	next_T_Serve_j: 10.0
-	server_times: [475 260   0   0]
-	Queue: []
+	server_times: [475. 260.   0.]
+	****Queue****
+: []
 	Served_Objects: [0. 1.]
 	Rejected_Objects: []
 	index: 3
 	next_Serve_time_j: 74.0
 	next_T_Serve_j: 14.0
-	server_times: [475 260  42   0]
-	Queue: []
+	server_times: [475. 260.  42.]
+	****Queue****
+: []
 	Served_Objects: [0. 1. 2.]
 	Rejected_Objects: []
 	index: 4
 	next_Serve_time_j: 181.0
 	next_T_Serve_j: 16.0
-	server_times: [475 260  42  88]
-	Queue: []
-	Served_Objects: [0. 1. 2. 3.]
+	server_times: [475. 260.  42.]
+	****Queue****
+: [{'queue_index': 3, 'server_index': 2}]
+	Served_Objects: [0. 1. 2.]
 	Rejected_Objects: []
+**************************debug***********************************************
 	index: 5
 	next_Serve_time_j: 26.0
 	next_T_Serve_j: 22.0
-	server_times: [475 260  42  88]
-	Queue: [{'server_index': 2, 'queue_index': 4}]
-	Served_Objects: [0. 1. 2. 3.]
+	server_times: [475. 260.  42.]
+	****Queue****
+: [{'queue_index': 3, 'server_index': 2}
+ {'queue_index': 4, 'server_index': 2}]
+	Served_Objects: [0. 1. 2.]
 	Rejected_Objects: []
 **************************debug***********************************************
 	index: 6
 	next_Serve_time_j: 73.0
 	next_T_Serve_j: 28.0
-	server_times: [475 260  42  88]
-	Queue: [{'server_index': 2, 'queue_index': 4}
- {'server_index': 2, 'queue_index': 5}]
-	Served_Objects: [0. 1. 2. 3.]
+	server_times: [475. 260.  42.]
+	****Queue****
+: [{'queue_index': 3, 'server_index': 2}
+ {'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}]
+	Served_Objects: [0. 1. 2.]
 	Rejected_Objects: []
 **************************debug***********************************************
 	index: 7
 	next_Serve_time_j: 115.0
 	next_T_Serve_j: 33.0
-	server_times: [475 260  42  88]
-	Queue: [{'server_index': 2, 'queue_index': 4}
- {'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}]
-	Served_Objects: [0. 1. 2. 3.]
-	Rejected_Objects: []
+	server_times: [475. 260.  42.]
+	****Queue****
+: [{'queue_index': 3, 'server_index': 2}
+ {'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}]
+	Served_Objects: [0. 1. 2.]
+	Rejected_Objects: [6.]
+**************************debug***********************************************
 	index: 8
 	next_Serve_time_j: 186.0
 	next_T_Serve_j: 40.0
-	server_times: [475 260  42  88]
-	Queue: [{'server_index': 2, 'queue_index': 4}
- {'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}]
-	Served_Objects: [0. 1. 2. 3.]
-	Rejected_Objects: []
+	server_times: [475. 260.  42.]
+	****Queue****
+: [{'queue_index': 3, 'server_index': 2}
+ {'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}]
+	Served_Objects: [0. 1. 2.]
+	Rejected_Objects: [6. 7.]
+**************************debug***********************************************
 	index: 9
 	next_Serve_time_j: 39.0
 	next_T_Serve_j: 45.0
-	server_times: [475 260  42  88]
-	Queue: [{'server_index': 2, 'queue_index': 4}
- {'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}]
-	Served_Objects: [0. 1. 2. 3.]
-	Rejected_Objects: []
+	server_times: [475. 260.  42.]
+	****Queue****
+: [{'queue_index': 3, 'server_index': 2}
+ {'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}]
+	Served_Objects: [0. 1. 2.]
+	Rejected_Objects: [6. 7. 8.]
 **************************debug***********************************************
 	index: 10
 	next_Serve_time_j: 100.0
 	next_T_Serve_j: 48.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
-	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	server_times: [475. 260. 116.]
+	****Queue****
+: [{'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}]
+	Served_Objects: [0. 1. 2. 3.]
+	Rejected_Objects: [6. 7. 8.]
+**************************debug***********************************************
 	index: 11
 	next_Serve_time_j: 275.0
 	next_T_Serve_j: 53.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
-	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	server_times: [475. 260. 116.]
+	****Queue****
+: [{'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}]
+	Served_Objects: [0. 1. 2. 3.]
+	Rejected_Objects: [ 6.  7.  8. 10.]
+**************************debug***********************************************
 	index: 12
 	next_Serve_time_j: 54.0
 	next_T_Serve_j: 64.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
-	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	server_times: [475. 260. 116.]
+	****Queue****
+: [{'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}]
+	Served_Objects: [0. 1. 2. 3.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11.]
+**************************debug***********************************************
 	index: 13
 	next_Serve_time_j: 121.0
 	next_T_Serve_j: 69.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
-	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	server_times: [475. 260. 116.]
+	****Queue****
+: [{'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}]
+	Served_Objects: [0. 1. 2. 3.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12.]
+**************************debug***********************************************
 	index: 14
 	next_Serve_time_j: 16.0
 	next_T_Serve_j: 76.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
-	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	server_times: [475. 260. 116.]
+	****Queue****
+: [{'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}]
+	Served_Objects: [0. 1. 2. 3.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13.]
+**************************debug***********************************************
 	index: 15
 	next_Serve_time_j: 89.0
 	next_T_Serve_j: 87.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
-	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	server_times: [475. 260. 116.]
+	****Queue****
+: [{'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}]
+	Served_Objects: [0. 1. 2. 3.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14.]
+**************************debug***********************************************
 	index: 16
 	next_Serve_time_j: 18.0
 	next_T_Serve_j: 94.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
-	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	server_times: [475. 260. 116.]
+	****Queue****
+: [{'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}]
+	Served_Objects: [0. 1. 2. 3.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15.]
+**************************debug***********************************************
 	index: 17
 	next_Serve_time_j: 272.0
 	next_T_Serve_j: 98.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
-	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	server_times: [475. 260. 116.]
+	****Queue****
+: [{'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}]
+	Served_Objects: [0. 1. 2. 3.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16.]
+**************************debug***********************************************
 	index: 18
 	next_Serve_time_j: 52.0
 	next_T_Serve_j: 104.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
-	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	server_times: [475. 260. 116.]
+	****Queue****
+: [{'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}]
+	Served_Objects: [0. 1. 2. 3.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17.]
+**************************debug***********************************************
 	index: 19
 	next_Serve_time_j: 44.0
 	next_T_Serve_j: 110.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
-	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	server_times: [475. 260. 116.]
+	****Queue****
+: [{'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}]
+	Served_Objects: [0. 1. 2. 3.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18.]
+**************************debug***********************************************
 	index: 20
 	next_Serve_time_j: 51.0
 	next_T_Serve_j: 117.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
-	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	server_times: [475. 260. 116.]
+	****Queue****
+: [{'queue_index': 4, 'server_index': 2}
+ {'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}]
+	Served_Objects: [0. 1. 2. 3.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19.]
+**************************debug***********************************************
 	index: 21
 	next_Serve_time_j: 42.0
 	next_T_Serve_j: 124.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19.]
+**************************debug***********************************************
 	index: 22
 	next_Serve_time_j: 12.0
 	next_T_Serve_j: 128.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21.]
+**************************debug***********************************************
 	index: 23
 	next_Serve_time_j: 98.0
 	next_T_Serve_j: 138.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22.]
+**************************debug***********************************************
 	index: 24
 	next_Serve_time_j: 157.0
 	next_T_Serve_j: 147.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23.]
+**************************debug***********************************************
 	index: 25
 	next_Serve_time_j: 82.0
 	next_T_Serve_j: 148.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24.]
+**************************debug***********************************************
 	index: 26
 	next_Serve_time_j: 75.0
 	next_T_Serve_j: 157.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.]
+**************************debug***********************************************
 	index: 27
 	next_Serve_time_j: 3.0
 	next_T_Serve_j: 162.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26.]
+**************************debug***********************************************
 	index: 28
 	next_Serve_time_j: 143.0
 	next_T_Serve_j: 171.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27.]
+**************************debug***********************************************
 	index: 29
 	next_Serve_time_j: 15.0
 	next_T_Serve_j: 178.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28.]
+**************************debug***********************************************
 	index: 30
 	next_Serve_time_j: 47.0
 	next_T_Serve_j: 184.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29.]
+**************************debug***********************************************
 	index: 31
 	next_Serve_time_j: 166.0
 	next_T_Serve_j: 188.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30.]
+**************************debug***********************************************
 	index: 32
 	next_Serve_time_j: 190.0
 	next_T_Serve_j: 190.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31.]
+**************************debug***********************************************
 	index: 33
 	next_Serve_time_j: 49.0
 	next_T_Serve_j: 195.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32.]
+**************************debug***********************************************
 	index: 34
 	next_Serve_time_j: 12.0
 	next_T_Serve_j: 206.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33.]
+**************************debug***********************************************
 	index: 35
 	next_Serve_time_j: 109.0
 	next_T_Serve_j: 209.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34.]
+**************************debug***********************************************
 	index: 36
 	next_Serve_time_j: 65.0
 	next_T_Serve_j: 214.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35.]
+**************************debug***********************************************
 	index: 37
 	next_Serve_time_j: 5.0
 	next_T_Serve_j: 220.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36.]
+**************************debug***********************************************
 	index: 38
 	next_Serve_time_j: 14.0
 	next_T_Serve_j: 225.0
-	server_times: [475 260 223  88]
-	Queue: [{'server_index': 2, 'queue_index': 5}
- {'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}]
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
 	Served_Objects: [0. 1. 2. 3. 4.]
-	Rejected_Objects: []
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37.]
 **************************debug***********************************************
 	index: 39
 	next_Serve_time_j: 14.0
 	next_T_Serve_j: 230.0
-	server_times: [475 260 249  88]
-	Queue: [{'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}
- {'server_index': 3, 'queue_index': 38}]
-	Served_Objects: [0. 1. 2. 3. 4. 5.]
-	Rejected_Objects: []
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38.]
+**************************debug***********************************************
 	index: 40
 	next_Serve_time_j: 31.0
 	next_T_Serve_j: 240.0
-	server_times: [475 260 249  88]
-	Queue: [{'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}
- {'server_index': 3, 'queue_index': 38}]
-	Served_Objects: [0. 1. 2. 3. 4. 5.]
-	Rejected_Objects: []
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39.]
+**************************debug***********************************************
 	index: 41
 	next_Serve_time_j: 41.0
 	next_T_Serve_j: 248.0
-	server_times: [475 260 249  88]
-	Queue: [{'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}
- {'server_index': 3, 'queue_index': 38}]
-	Served_Objects: [0. 1. 2. 3. 4. 5.]
-	Rejected_Objects: []
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40.]
+**************************debug***********************************************
 	index: 42
 	next_Serve_time_j: 2.0
 	next_T_Serve_j: 254.0
-	server_times: [475 260 249  88]
-	Queue: [{'server_index': 2, 'queue_index': 6}
- {'server_index': 3, 'queue_index': 9}
- {'server_index': 3, 'queue_index': 38}]
-	Served_Objects: [0. 1. 2. 3. 4. 5.]
-	Rejected_Objects: []
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41.]
+**************************debug***********************************************
 	index: 43
 	next_Serve_time_j: 72.0
 	next_T_Serve_j: 261.0
-	server_times: [475 260 322 256]
-	Queue: []
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42.]
-	Rejected_Objects: []
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42.]
+**************************debug***********************************************
 	index: 44
 	next_Serve_time_j: 87.0
 	next_T_Serve_j: 269.0
-	server_times: [475 333 322 256]
-	Queue: []
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43.]
-	Rejected_Objects: []
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.]
+**************************debug***********************************************
 	index: 45
 	next_Serve_time_j: 5.0
 	next_T_Serve_j: 273.0
-	server_times: [475 333 322 356]
-	Queue: []
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44.]
-	Rejected_Objects: []
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44.]
+**************************debug***********************************************
 	index: 46
 	next_Serve_time_j: 21.0
 	next_T_Serve_j: 279.0
-	server_times: [475 333 322 356]
-	Queue: [{'server_index': 2, 'queue_index': 45}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44.]
-	Rejected_Objects: []
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45.]
 **************************debug***********************************************
 	index: 47
 	next_Serve_time_j: 66.0
 	next_T_Serve_j: 285.0
-	server_times: [475 333 322 356]
-	Queue: [{'server_index': 2, 'queue_index': 45}
- {'server_index': 2, 'queue_index': 46}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44.]
-	Rejected_Objects: []
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46.]
 **************************debug***********************************************
 	index: 48
 	next_Serve_time_j: 11.0
 	next_T_Serve_j: 294.0
-	server_times: [475 333 322 356]
-	Queue: [{'server_index': 2, 'queue_index': 45}
- {'server_index': 2, 'queue_index': 46}
- {'server_index': 2, 'queue_index': 47}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44.]
-	Rejected_Objects: []
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47.]
+**************************debug***********************************************
 	index: 49
 	next_Serve_time_j: 50.0
 	next_T_Serve_j: 303.0
-	server_times: [475 333 322 356]
-	Queue: [{'server_index': 2, 'queue_index': 45}
- {'server_index': 2, 'queue_index': 46}
- {'server_index': 2, 'queue_index': 47}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44.]
-	Rejected_Objects: []
+	server_times: [475. 260. 297.]
+	****Queue****
+: [{'queue_index': 5, 'server_index': 2}
+ {'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48.]
+**************************debug***********************************************
 	index: 50
 	next_Serve_time_j: 26.0
 	next_T_Serve_j: 307.0
-	server_times: [475 333 322 356]
-	Queue: [{'server_index': 2, 'queue_index': 45}
- {'server_index': 2, 'queue_index': 46}
- {'server_index': 2, 'queue_index': 47}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44.]
-	Rejected_Objects: []
+	server_times: [475. 260. 323.]
+	****Queue****
+: [{'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}
+ {'queue_index': 49, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4. 5.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48.]
+**************************debug***********************************************
 	index: 51
 	next_Serve_time_j: 66.0
 	next_T_Serve_j: 311.0
-	server_times: [475 333 322 356]
-	Queue: [{'server_index': 2, 'queue_index': 45}
- {'server_index': 2, 'queue_index': 46}
- {'server_index': 2, 'queue_index': 47}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44.]
-	Rejected_Objects: []
+	server_times: [475. 260. 323.]
+	****Queue****
+: [{'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}
+ {'queue_index': 49, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4. 5.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50.]
+**************************debug***********************************************
 	index: 52
 	next_Serve_time_j: 14.0
 	next_T_Serve_j: 316.0
-	server_times: [475 333 322 356]
-	Queue: [{'server_index': 2, 'queue_index': 45}
- {'server_index': 2, 'queue_index': 46}
- {'server_index': 2, 'queue_index': 47}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44.]
-	Rejected_Objects: []
+	server_times: [475. 260. 323.]
+	****Queue****
+: [{'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}
+ {'queue_index': 49, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4. 5.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51.]
+**************************debug***********************************************
 	index: 53
 	next_Serve_time_j: 16.0
 	next_T_Serve_j: 325.0
-	server_times: [475 333 322 356]
-	Queue: [{'server_index': 2, 'queue_index': 45}
- {'server_index': 2, 'queue_index': 46}
- {'server_index': 2, 'queue_index': 47}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44.]
-	Rejected_Objects: []
-**************************debug***********************************************
+	server_times: [475. 260. 323.]
+	****Queue****
+: [{'queue_index': 9, 'server_index': 2}
+ {'queue_index': 20, 'server_index': 1}
+ {'queue_index': 49, 'server_index': 1}]
+	Served_Objects: [0. 1. 2. 3. 4. 5.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52.]
 	index: 54
 	next_Serve_time_j: 88.0
 	next_T_Serve_j: 329.0
-	server_times: [475 333 327 356]
-	Queue: [{'server_index': 2, 'queue_index': 46}
- {'server_index': 2, 'queue_index': 47}
- {'server_index': 2, 'queue_index': 53}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45.]
-	Rejected_Objects: []
+	server_times: [475. 361. 362.]
+	****Queue****
+: [{'queue_index': 53, 'server_index': 1}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52.]
 **************************debug***********************************************
 	index: 55
 	next_Serve_time_j: 10.0
 	next_T_Serve_j: 334.0
-	server_times: [475 333 348 356]
-	Queue: [{'server_index': 2, 'queue_index': 47}
- {'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46.]
-	Rejected_Objects: []
+	server_times: [475. 361. 362.]
+	****Queue****
+: [{'queue_index': 53, 'server_index': 1}
+ {'queue_index': 54, 'server_index': 1}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52.]
+**************************debug***********************************************
 	index: 56
 	next_Serve_time_j: 27.0
 	next_T_Serve_j: 336.0
-	server_times: [475 333 348 356]
-	Queue: [{'server_index': 2, 'queue_index': 47}
- {'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46.]
-	Rejected_Objects: []
+	server_times: [475. 361. 362.]
+	****Queue****
+: [{'queue_index': 53, 'server_index': 1}
+ {'queue_index': 54, 'server_index': 1}
+ {'queue_index': 55, 'server_index': 1}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52.]
+**************************debug***********************************************
 	index: 57
 	next_Serve_time_j: 86.0
 	next_T_Serve_j: 340.0
-	server_times: [475 333 348 356]
-	Queue: [{'server_index': 2, 'queue_index': 47}
- {'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46.]
-	Rejected_Objects: []
+	server_times: [475. 361. 362.]
+	****Queue****
+: [{'queue_index': 53, 'server_index': 1}
+ {'queue_index': 54, 'server_index': 1}
+ {'queue_index': 55, 'server_index': 1}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56.]
+**************************debug***********************************************
 	index: 58
 	next_Serve_time_j: 200.0
 	next_T_Serve_j: 348.0
-	server_times: [475 333 348 356]
-	Queue: [{'server_index': 2, 'queue_index': 47}
- {'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46.]
-	Rejected_Objects: []
+	server_times: [475. 361. 362.]
+	****Queue****
+: [{'queue_index': 53, 'server_index': 1}
+ {'queue_index': 54, 'server_index': 1}
+ {'queue_index': 55, 'server_index': 1}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57.]
 **************************debug***********************************************
 	index: 59
 	next_Serve_time_j: 87.0
 	next_T_Serve_j: 357.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 361. 362.]
+	****Queue****
+: [{'queue_index': 53, 'server_index': 1}
+ {'queue_index': 54, 'server_index': 1}
+ {'queue_index': 55, 'server_index': 1}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58.]
+**************************debug***********************************************
 	index: 60
 	next_Serve_time_j: 2.0
 	next_T_Serve_j: 365.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 361. 362.]
+	****Queue****
+: [{'queue_index': 53, 'server_index': 1}
+ {'queue_index': 54, 'server_index': 1}
+ {'queue_index': 55, 'server_index': 1}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59.]
+**************************debug***********************************************
 	index: 61
 	next_Serve_time_j: 45.0
 	next_T_Serve_j: 371.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 377. 362.]
+	****Queue****
+: [{'queue_index': 54, 'server_index': 1}
+ {'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59.]
+**************************debug***********************************************
 	index: 62
 	next_Serve_time_j: 54.0
 	next_T_Serve_j: 374.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 377. 362.]
+	****Queue****
+: [{'queue_index': 54, 'server_index': 1}
+ {'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61.]
+**************************debug***********************************************
 	index: 63
 	next_Serve_time_j: 114.0
 	next_T_Serve_j: 381.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 377. 362.]
+	****Queue****
+: [{'queue_index': 54, 'server_index': 1}
+ {'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62.]
+**************************debug***********************************************
 	index: 64
 	next_Serve_time_j: 138.0
 	next_T_Serve_j: 385.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62.]
+**************************debug***********************************************
 	index: 65
 	next_Serve_time_j: 436.0
 	next_T_Serve_j: 389.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64.]
+**************************debug***********************************************
 	index: 66
 	next_Serve_time_j: 214.0
 	next_T_Serve_j: 393.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65.]
+**************************debug***********************************************
 	index: 67
 	next_Serve_time_j: 179.0
 	next_T_Serve_j: 402.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66.]
+**************************debug***********************************************
 	index: 68
 	next_Serve_time_j: 22.0
 	next_T_Serve_j: 406.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.]
+**************************debug***********************************************
 	index: 69
 	next_Serve_time_j: 132.0
 	next_T_Serve_j: 413.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68.]
+**************************debug***********************************************
 	index: 70
 	next_Serve_time_j: 94.0
 	next_T_Serve_j: 416.0
-	server_times: [475 333 414 356]
-	Queue: [{'server_index': 2, 'queue_index': 53}
- {'server_index': 1, 'queue_index': 54}
- {'server_index': 1, 'queue_index': 58}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69.]
 **************************debug***********************************************
 	index: 71
 	next_Serve_time_j: 63.0
 	next_T_Serve_j: 422.0
-	server_times: [475 421 430 356]
-	Queue: [{'server_index': 1, 'queue_index': 58}
- {'server_index': 3, 'queue_index': 70}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70.]
+**************************debug***********************************************
 	index: 72
 	next_Serve_time_j: 107.0
 	next_T_Serve_j: 429.0
-	server_times: [475 621 430 450]
-	Queue: [{'server_index': 2, 'queue_index': 71}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71.]
 **************************debug***********************************************
 	index: 73
 	next_Serve_time_j: 43.0
 	next_T_Serve_j: 434.0
-	server_times: [475 621 430 450]
-	Queue: [{'server_index': 2, 'queue_index': 71}
- {'server_index': 2, 'queue_index': 72}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72.]
 **************************debug***********************************************
 	index: 74
 	next_Serve_time_j: 30.0
 	next_T_Serve_j: 442.0
-	server_times: [475 621 493 450]
-	Queue: [{'server_index': 2, 'queue_index': 72}
- {'server_index': 3, 'queue_index': 73}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73.]
 **************************debug***********************************************
 	index: 75
 	next_Serve_time_j: 22.0
 	next_T_Serve_j: 457.0
-	server_times: [475 621 493 450]
-	Queue: [{'server_index': 2, 'queue_index': 72}
- {'server_index': 3, 'queue_index': 73}
- {'server_index': 3, 'queue_index': 74}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74.]
+**************************debug***********************************************
 	index: 76
 	next_Serve_time_j: 147.0
 	next_T_Serve_j: 460.0
-	server_times: [475 621 493 450]
-	Queue: [{'server_index': 2, 'queue_index': 72}
- {'server_index': 3, 'queue_index': 73}
- {'server_index': 3, 'queue_index': 74}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75.]
+**************************debug***********************************************
 	index: 77
 	next_Serve_time_j: 30.0
 	next_T_Serve_j: 464.0
-	server_times: [475 621 493 450]
-	Queue: [{'server_index': 2, 'queue_index': 72}
- {'server_index': 3, 'queue_index': 73}
- {'server_index': 3, 'queue_index': 74}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76.]
+**************************debug***********************************************
 	index: 78
 	next_Serve_time_j: 26.0
 	next_T_Serve_j: 473.0
-	server_times: [475 621 493 450]
-	Queue: [{'server_index': 2, 'queue_index': 72}
- {'server_index': 3, 'queue_index': 73}
- {'server_index': 3, 'queue_index': 74}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71.]
-	Rejected_Objects: []
+	server_times: [475. 465. 362.]
+	****Queue****
+: [{'queue_index': 55, 'server_index': 1}
+ {'queue_index': 60, 'server_index': 2}
+ {'queue_index': 63, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77.]
 	index: 79
 	next_Serve_time_j: 49.0
 	next_T_Serve_j: 475.0
-	server_times: [475 621 493 450]
-	Queue: [{'server_index': 2, 'queue_index': 72}
- {'server_index': 3, 'queue_index': 73}
- {'server_index': 3, 'queue_index': 74}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71.]
-	Rejected_Objects: []
+	server_times: [475. 475. 478.]
+	****Queue****
+: [{'queue_index': 78, 'server_index': 0}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77.]
 	index: 80
 	next_Serve_time_j: 4.0
 	next_T_Serve_j: 481.0
-	server_times: [475 621 493 450]
-	Queue: [{'server_index': 2, 'queue_index': 72}
- {'server_index': 3, 'queue_index': 73}
- {'server_index': 3, 'queue_index': 74}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71.]
-	Rejected_Objects: []
+	server_times: [501. 524. 478.]
+	****Queue****
+: []
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77.]
 	index: 81
 	next_Serve_time_j: 0.0
 	next_T_Serve_j: 491.0
-	server_times: [475 621 493 450]
-	Queue: [{'server_index': 2, 'queue_index': 72}
- {'server_index': 3, 'queue_index': 73}
- {'server_index': 3, 'queue_index': 74}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71.]
-	Rejected_Objects: []
+	server_times: [501. 524. 485.]
+	****Queue****
+: []
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77.]
 	index: 82
 	next_Serve_time_j: 7.0
 	next_T_Serve_j: 494.0
-	server_times: [475 621 493 450]
-	Queue: [{'server_index': 2, 'queue_index': 72}
- {'server_index': 3, 'queue_index': 73}
- {'server_index': 3, 'queue_index': 74}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71.]
-	Rejected_Objects: []
+	server_times: [501. 524. 491.]
+	****Queue****
+: []
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77.]
 	index: 83
 	next_Serve_time_j: 98.0
 	next_T_Serve_j: 499.0
-	server_times: [501 621 600 523]
-	Queue: []
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82.]
-	Rejected_Objects: []
+	server_times: [501. 524. 501.]
+	****Queue****
+: []
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77.]
 	index: 84
 	next_Serve_time_j: 137.0
 	next_T_Serve_j: 503.0
-	server_times: [501 621 600 523]
-	Queue: [{'server_index': 0, 'queue_index': 83}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82.]
-	Rejected_Objects: []
+	server_times: [501. 524. 501.]
+	****Queue****
+: [{'queue_index': 83, 'server_index': 0}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77.]
 	index: 85
 	next_Serve_time_j: 241.0
 	next_T_Serve_j: 508.0
-	server_times: [599 621 600 523]
-	Queue: []
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83.]
-	Rejected_Objects: [84.]
+	server_times: [599. 524. 501.]
+	****Queue****
+: []
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84.]
 	index: 86
 	next_Serve_time_j: 20.0
 	next_T_Serve_j: 512.0
-	server_times: [599 621 600 523]
-	Queue: []
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83.]
-	Rejected_Objects: [84. 85.]
+	server_times: [599. 524. 501.]
+	****Queue****
+: []
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85.]
 	index: 87
 	next_Serve_time_j: 54.0
 	next_T_Serve_j: 517.0
-	server_times: [599 621 600 523]
-	Queue: [{'server_index': 3, 'queue_index': 86}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83.]
-	Rejected_Objects: [84. 85.]
-**************************debug***********************************************
+	server_times: [599. 524. 532.]
+	****Queue****
+: []
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85.]
 	index: 88
 	next_Serve_time_j: 96.0
 	next_T_Serve_j: 524.0
-	server_times: [599 621 600 523]
-	Queue: [{'server_index': 3, 'queue_index': 86}
- {'server_index': 3, 'queue_index': 87}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83.]
-	Rejected_Objects: [84. 85.]
-**************************debug***********************************************
+	server_times: [599. 524. 532.]
+	****Queue****
+: [{'queue_index': 87, 'server_index': 1}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85.]
 	index: 89
 	next_Serve_time_j: 89.0
 	next_T_Serve_j: 528.0
-	server_times: [599 621 600 543]
-	Queue: [{'server_index': 3, 'queue_index': 87}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86.]
-	Rejected_Objects: [84. 85. 88.]
-**************************debug***********************************************
+	server_times: [599. 578. 532.]
+	****Queue****
+: []
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88.]
 	index: 90
 	next_Serve_time_j: 19.0
 	next_T_Serve_j: 531.0
-	server_times: [599 621 600 543]
-	Queue: [{'server_index': 3, 'queue_index': 87}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86.]
-	Rejected_Objects: [84. 85. 88. 89.]
-**************************debug***********************************************
+	server_times: [599. 578. 532.]
+	****Queue****
+: []
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88. 89.]
 	index: 91
 	next_Serve_time_j: 30.0
 	next_T_Serve_j: 539.0
-	server_times: [599 621 600 543]
-	Queue: [{'server_index': 3, 'queue_index': 87}
- {'server_index': 3, 'queue_index': 90}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86.]
-	Rejected_Objects: [84. 85. 88. 89.]
-**************************debug***********************************************
+	server_times: [599. 578. 532.]
+	****Queue****
+: [{'queue_index': 90, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88. 89.]
 	index: 92
 	next_Serve_time_j: 16.0
 	next_T_Serve_j: 543.0
-	server_times: [599 621 600 543]
-	Queue: [{'server_index': 3, 'queue_index': 87}
- {'server_index': 3, 'queue_index': 90}
- {'server_index': 3, 'queue_index': 91}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86.]
-	Rejected_Objects: [84. 85. 88. 89.]
+	server_times: [599. 578. 551.]
+	****Queue****
+: [{'queue_index': 91, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87. 90.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88. 89.]
 **************************debug***********************************************
 	index: 93
 	next_Serve_time_j: 94.0
 	next_T_Serve_j: 549.0
-	server_times: [599 621 600 597]
-	Queue: [{'server_index': 3, 'queue_index': 90}
- {'server_index': 3, 'queue_index': 91}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86. 87.]
-	Rejected_Objects: [84. 85. 88. 89. 92.]
+	server_times: [599. 578. 551.]
+	****Queue****
+: [{'queue_index': 91, 'server_index': 2}
+ {'queue_index': 92, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87. 90.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88. 89.]
 **************************debug***********************************************
 	index: 94
 	next_Serve_time_j: 62.0
 	next_T_Serve_j: 556.0
-	server_times: [599 621 600 597]
-	Queue: [{'server_index': 3, 'queue_index': 90}
- {'server_index': 3, 'queue_index': 91}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86. 87.]
-	Rejected_Objects: [84. 85. 88. 89. 92. 93.]
+	server_times: [599. 578. 551.]
+	****Queue****
+: [{'queue_index': 91, 'server_index': 2}
+ {'queue_index': 92, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87. 90.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88. 89. 93.]
 **************************debug***********************************************
 	index: 95
 	next_Serve_time_j: 84.0
 	next_T_Serve_j: 557.0
-	server_times: [599 621 600 597]
-	Queue: [{'server_index': 3, 'queue_index': 90}
- {'server_index': 3, 'queue_index': 91}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86. 87.]
-	Rejected_Objects: [84. 85. 88. 89. 92. 93. 94.]
+	server_times: [599. 578. 581.]
+	****Queue****
+: [{'queue_index': 92, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87. 90. 91.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88. 89. 93. 94.]
 **************************debug***********************************************
 	index: 96
 	next_Serve_time_j: 108.0
 	next_T_Serve_j: 565.0
-	server_times: [599 621 600 597]
-	Queue: [{'server_index': 3, 'queue_index': 90}
- {'server_index': 3, 'queue_index': 91}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86. 87.]
-	Rejected_Objects: [84. 85. 88. 89. 92. 93. 94. 95.]
+	server_times: [599. 578. 581.]
+	****Queue****
+: [{'queue_index': 92, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87. 90. 91.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88. 89. 93. 94. 95.]
 **************************debug***********************************************
 	index: 97
 	next_Serve_time_j: 54.0
 	next_T_Serve_j: 569.0
-	server_times: [599 621 600 597]
-	Queue: [{'server_index': 3, 'queue_index': 90}
- {'server_index': 3, 'queue_index': 91}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86. 87.]
-	Rejected_Objects: [84. 85. 88. 89. 92. 93. 94. 95. 96.]
+	server_times: [599. 578. 581.]
+	****Queue****
+: [{'queue_index': 92, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87. 90. 91.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88. 89. 93. 94. 95. 96.]
 **************************debug***********************************************
 	index: 98
 	next_Serve_time_j: 101.0
 	next_T_Serve_j: 576.0
-	server_times: [599 621 600 597]
-	Queue: [{'server_index': 3, 'queue_index': 90}
- {'server_index': 3, 'queue_index': 91}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86. 87.]
-	Rejected_Objects: [84. 85. 88. 89. 92. 93. 94. 95. 96. 97.]
+	server_times: [599. 578. 581.]
+	****Queue****
+: [{'queue_index': 92, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87. 90. 91.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88. 89. 93. 94. 95. 96.
+ 97.]
 **************************debug***********************************************
 	index: 99
 	next_Serve_time_j: 4.0
 	next_T_Serve_j: 579.0
-	server_times: [599 621 600 597]
-	Queue: [{'server_index': 3, 'queue_index': 90}
- {'server_index': 3, 'queue_index': 91}]
-	Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86. 87.]
-	Rejected_Objects: [84. 85. 88. 89. 92. 93. 94. 95. 96. 97. 98.]
+	server_times: [599. 578. 581.]
+	****Queue****
+: [{'queue_index': 92, 'server_index': 2}]
+	Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87. 90. 91.]
+	Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88. 89. 93. 94. 95. 96.
+ 97. 98.]
 **************************debug***********************************************
 
-Served_Objects: [ 0.  1.  2.  3.  4.  5.  6.  9. 38. 42. 43. 44. 45. 46. 47. 53. 54. 58.
- 70. 71. 72. 73. 74. 82. 83. 86. 87.]
-Rejected_Objects: [84. 85. 88. 89. 92. 93. 94. 95. 96. 97. 98. 99.]
-Nnum_Served: 27
-Nnum_Rejected: 12
-total: 39
+Served_Objects: [ 0.  1.  2.  3.  4.  5.  9. 20. 49. 53. 54. 55. 60. 63. 78. 79. 80. 81.
+ 82. 83. 86. 87. 90. 91.]
+Rejected_Objects: [ 6.  7.  8. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 21. 22. 23. 24. 25.
+ 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43.
+ 44. 45. 46. 47. 48. 50. 51. 52. 56. 57. 58. 59. 61. 62. 64. 65. 66. 67.
+ 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 84. 85. 88. 89. 93. 94. 95. 96.
+ 97. 98.]
+Nnum_Served: 24
+Nnum_Rejected: 74
+total: 98
+final_index: 100
