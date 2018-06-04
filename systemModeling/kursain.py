@@ -197,8 +197,7 @@ for i in range(__Nmodelling__):
     # print("final_index:", index)
     Model_Rejected_N = np.append(Model_Rejected_N, Rejected_Objects.shape[0])
     Model_Served_N = np.append(Model_Served_N, Served_Objects.shape[0])
-
-print("debug:", Model_First_Server_Time) 
+print("debug", Model_First_Server_Time)
 P_SERVE_MEAN = np.mean(Model_Served_N) # model serve mean
 P_SERVE_STD = np.std(Model_Served_N)
 T_TABLE = 1.98
@@ -215,12 +214,13 @@ print("T_COMPUTED:", T_COMPUTED)
 print("MODEL_SERVE_PROBABILITY:", MODEL_SERVE_PROBABILITY)
 print("MODEL_SERVE_MEAN_TIME:", MODEL_SERVE_MEAN_TIME)
 print("SYSTEM_BANDWITH:", SYSTEM_BANDWITH)
-
+print("mek kapuxu zbaxvacutyan",np.sum(Model_First_Server_Time)/(T*__Nmodelling__))
 '''
 spasrkam hav
 merjman
 hamakargi toxunakutyun  = ichqan hayta spasarkvel / spasparkvacneri jamanaki vra
 mek kapuxu zbaxvacutyan= havanakanutyun kapucu zbaxvacutyun /T
+
 mek kapuxu parapurdi havanakanutyun 
 spasarkman mijin jamanak
 hertum hayeri spasman mijin janmanak
