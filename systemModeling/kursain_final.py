@@ -5,7 +5,7 @@ import copy
 congruent_offset = 0
 __Nmodelling__= 100
 exponent_dist_lambda=0.8
-Number_of_Servers = 4 # varsavir
+Number_of_Servers = 4444 # varsavir
 Queue_Length = 3 # person
 N_CLIENTS_DIST = 110# pordzarkumneri qan
 T = 600 # in minutes
@@ -108,7 +108,8 @@ for i in range(__Nmodelling__):
             boolean = True
             for arr_Queue_dict_i in arr_Queue_dict:
                 if T_Serve_j >= Server_Times[arr_Queue_dict_i["server_index"]] and boolean:
-                    Queue_Wait_Time = np.append(Queue_Wait_Time, Server_Times[arr_Queue_dict_i["server_index"]]-T_Serve[arr_Queue_dict_i["queue_index"]])
+                    if Server_Times[arr_Queue_dict_i["server_index"]]-T_Serve[arr_Queue_dict_i["queue_index"]]>0:
+                        Queue_Wait_Time = np.append(Queue_Wait_Time, Server_Times[arr_Queue_dict_i["server_index"]]-T_Serve[arr_Queue_dict_i["queue_index"]])
                     Server_Times[arr_Queue_dict_i["server_index"]] += T_Serve_Time[arr_Queue_dict_i["queue_index"]]
                     Served_Objects = np.append(Served_Objects, arr_Queue_dict_i["queue_index"])
                     Served_Objects_Time = np.append(Served_Objects_Time, T_Serve_Time[arr_Queue_dict_i["queue_index"]])
