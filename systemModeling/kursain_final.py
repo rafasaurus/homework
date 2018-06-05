@@ -5,7 +5,7 @@ import copy
 congruent_offset = 0
 __Nmodelling__= 100
 exponent_dist_lambda=0.8
-Number_of_Servers = 4444 # varsavir
+Number_of_Servers = 12 # varsavir
 Queue_Length = 3 # person
 N_CLIENTS_DIST = 110# pordzarkumneri qan
 T = 600 # in minutes
