@@ -11,7 +11,7 @@ class combodemo(QWidget):
       self.cb = QComboBox()
       self.cb.addItems(["age", "job", "marital", "education", "default", "housing", "loan", "contact", "month", "day_of_week", "duration", "campaign", "pdays", "previous", "poutcome", "emp_var_rate", "cons_price_idx", "cons_conf_idx", "euribor3m", "nr_employed", "y"])
       self.cb.currentIndexChanged.connect(self.selectionchange)
-      self.button = QPushButton('Test', self)
+      self.button = QPushButton('Test')
       self.button.clicked.connect(self.handleButton)
       layout = QVBoxLayout(self)
 
@@ -24,8 +24,9 @@ class combodemo(QWidget):
       font.setFamily("Courier")
       font.setPointSize(10)
 
-      layout.addWidget(self.cb)
       layout.addWidget(self.textFeild)
+      layout.addWidget(self.cb)
+      layout.addWidget(self.button)
       self.setLayout(layout)
       self.setWindowTitle("combo box demo")
 
