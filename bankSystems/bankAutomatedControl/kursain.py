@@ -14,6 +14,7 @@ data = pd.read_csv('bank.csv', header=0)
 data = data.dropna()
 print(data.shape)
 print(list(data.columns))
+
 data2 = pd.get_dummies(data, columns =['job', 'marital', 'default', 'housing', 'loan', 'poutcome'])
 data2.drop(data2.columns[[12, 16, 18, 21, 24]], axis=1, inplace=True)
 sns.heatmap(data2.corr())

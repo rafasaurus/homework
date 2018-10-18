@@ -9,23 +9,51 @@ class combodemo(QWidget):
       
       layout = QHBoxLayout()
       self.cb = QComboBox()
-      self.cb.addItems(["age", "job", "marital", "education", "default", "housing", "loan", "contact", "month", "day_of_week", "duration", "campaign", "pdays", "previous", "poutcome", "emp_var_rate", "cons_price_idx", "cons_conf_idx", "euribor3m", "nr_employed", "y"])
+      data_feild= ["age", "job", "marital", "education", "default", "housing", "loan", "contact", "month", "day_of_week", "duration", "campaign", "pdays", "previous", "poutcome", "emp_var_rate", "cons_price_idx", "cons_conf_idx", "euribor3m", "nr_employed", "y"]
+      self.cb.addItems(data_feild)
+
+      user_submission_field = data_feild[:] # copy not reference
+      for data_field_item in data_feild:
+          # print(data_feild.index(data_field_item))
+          # self.textFeild = QTextEdit(parent)
+          # self.textFeild.setReadOnly(True)
+          # self.textFeild.setLineWrapMode(QTextEdit.NoWrap)
+          # self.textFeild.insertPlainText(data_field_item)
+          # self.textFeild.resize(10,10);
+          # font = self.textFeild.font()
+          # font.setFamily("Courier")
+          # font.setPointSize(10)
+          self.textboxData = QLineEdit(self)
+          self.textboxData.move(100, 40 * data_feild.index(data_field_item))
+          self.textboxData.resize(200,40)
+          self.textboxData.setText(data_field_item)
+
+          self.textboxSubmit = QLineEdit(self)
+          self.textboxSubmit.move(350, 40 * data_feild.index(data_field_item))
+          self.textboxSubmit.resize(230,40)
+          self.textboxSubmit.setText(data_field_item)
+
+          layout.addWidget(self.textboxSubmit)
+          layout.addWidget(self.textboxData)
+
+      # button push
       self.cb.currentIndexChanged.connect(self.selectionchange)
-      self.button = QPushButton('Test')
+      self.button = QPushButton('Test', self)
+      self.button.move(500, 500)
+      self.button.resize(50,50)
       self.button.clicked.connect(self.handleButton)
       layout = QVBoxLayout(self)
-
-      self.textFeild = QTextEdit(parent)
-      # self.textFeild.setReadOnly(True)
-      self.textFeild.setLineWrapMode(QTextEdit.NoWrap)
-      self.textFeild.insertPlainText("hello from the other sideee")
+      self.showMaximized() # fullscreen
+    
+      # self.textFeild = QTextEdit(parent)
+      # # self.textFeild.setReadOnly(True)
+      # self.textFeild.setLineWrapMode(QTextEdit.NoWrap)
+      # self.textFeild.insertPlainText("hello from the other sideee")
       
-      font = self.textFeild.font()
-      font.setFamily("Courier")
-      font.setPointSize(10)
 
-      layout.addWidget(self.textFeild)
-      layout.addWidget(self.cb)
+      # layout.addWidget(self.textFeild)
+      # layout.addWidget(self.textbox)
+      #layout.addWidget(self.cb)
       layout.addWidget(self.button)
       self.setLayout(layout)
       self.setWindowTitle("combo box demo")
