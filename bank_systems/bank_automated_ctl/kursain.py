@@ -8,9 +8,9 @@ class combodemo(QWidget):
         super(combodemo, self).__init__(parent)
         
         layout = QHBoxLayout()
-        self.cb = QComboBox()
+        # self.cb = QComboBox()
         data_feild= ["age", "job", "marital", "education", "default", "housing", "loan", "contact", "month", "day_of_week", "duration", "campaign", "pdays", "previous", "poutcome", "emp_var_rate", "cons_price_idx", "cons_conf_idx", "euribor3m", "nr_employed", "y"]
-        self.cb.addItems(data_feild)
+        # self.cb.addItems(data_feild)
 
         user_submission_field = data_feild[:] # copy not reference
         self.textboxSubmitList = []
@@ -40,7 +40,7 @@ class combodemo(QWidget):
 
         print(self.textboxSubmitList[:])
         # button push
-        self.cb.currentIndexChanged.connect(self.selectionchange)
+        # self.cb.currentIndexChanged.connect(self.selectionchange)
         self.button = QPushButton('Test', self)
         self.button.move(200, 900)
         self.button.resize(200,50)
@@ -51,7 +51,6 @@ class combodemo(QWidget):
         # # self.textFeild.setReadOnly(True)
         # self.textFeild.setLineWrapMode(QTextEdit.NoWrap)
         # self.textFeild.insertPlainText("hello from the other sideee")
-        
 
         # layout.addWidget(self.textFeild)
         # layout.addWidget(self.textbox)
@@ -61,33 +60,23 @@ class combodemo(QWidget):
         self.setLayout(layout)
         self.setWindowTitle("combo box demo")
 
+    # def selectionchange(self,i):
+    #     print "Items in the list are :"
+    #       	
+    #     for count in range(self.cb.count()):
+    #        print self.cb.itemText(count)
+    #     print "Current index",i,"selection changed ",self.cb.currentText()
 
-    def textChange(self,i):
-        print "Items in the list are :"
-          	
-        for count in range(self.cb.count()):
-           print self.cb.itemText(count)
-        print "Current index",i,"selection changed ",self.cb.currentText()
-    def handleText(self):
-        print ('Hello World')
-
-    def selectionchange(self,i):
-        print "Items in the list are :"
-          	
-        for count in range(self.cb.count()):
-           print self.cb.itemText(count)
-        print "Current index",i,"selection changed ",self.cb.currentText()
     def handleButton(self):
-        print ('Hello World')
+        print "test:", str(self.get_textbox_value(1))
 
-    def get(self, i):
+    def get_textbox_value(self, i):
         return self.textboxSubmitList[i].displayText()
 		
 def main():
     app = QApplication(sys.argv)
     ex = combodemo()
     ex.show()
-    print(ex.get(1))
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
