@@ -1,32 +1,94 @@
-# https://datascienceplus.com/building-a-logistic-regression-in-python-step-by-step/
-import pandas as pd
-import numpy as np
-from sklearn import preprocessing
-import matplotlib.pyplot as plt 
-plt.rc("font", size=14)
-from sklearn.linear_model import LogisticRegression
-from sklearn.cross_validation import train_test_split
-import seaborn as sns
-sns.set(style="white")
-sns.set(style="whitegrid", color_codes=True)
+#!/usr/bin/python
+import sys
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
 
-data = pd.read_csv('bank.csv', header=0)
-data = data.dropna()
-print(data.shape)
-print(list(data.columns))
+class combodemo(QWidget):
+    def __init__(self, parent = None):
+        super(combodemo, self).__init__(parent)
+        
+        layout = QHBoxLayout()
+        self.cb = QComboBox()
+        data_feild= ["age", "job", "marital", "education", "default", "housing", "loan", "contact", "month", "day_of_week", "duration", "campaign", "pdays", "previous", "poutcome", "emp_var_rate", "cons_price_idx", "cons_conf_idx", "euribor3m", "nr_employed", "y"]
+        self.cb.addItems(data_feild)
 
-data2 = pd.get_dummies(data, columns =['job', 'marital', 'default', 'housing', 'loan', 'poutcome'])
-data2.drop(data2.columns[[12, 16, 18, 21, 24]], axis=1, inplace=True)
-sns.heatmap(data2.corr())
-# plt.show()
-X = data2.iloc[:,1:]
-y = data2.iloc[:,0]
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+        user_submission_field = data_feild[:] # copy not reference
+        self.textboxSubmitList = []
+        for data_field_item in data_feild:
+             # print(data_feild.index(data_field_item))
+             # self.textFeild = QTextEdit(parent)
+             # self.textFeild.setReadOnly(True)
+             # self.textFeild.setLineWrapMode(QTextEdit.NoWrap)
+             # self.textFeild.insertPlainText(data_field_item)
+             # self.textFeild.resize(10,10);
+             # font = self.textFeild.font()
+             # font.setFamily("Courier")
+             # font.setPointSize(10)
+             self.textboxData = QLabel(self)
+             self.textboxData.move(100, 40 * data_feild.index(data_field_item))
+             self.textboxData.resize(200,40)
+             self.textboxData.setText(data_field_item)
 
-classifier = LogisticRegression(random_state=0)
-classifier.fit(X_train, y_train)
+             self.textboxSubmit = QLineEdit(self)
+             self.textboxSubmit.move(350, 40 * data_feild.index(data_field_item))
+             self.textboxSubmit.resize(230,40)
+             self.textboxSubmit.setText(data_field_item)
+             self.textboxSubmitList.append(self.textboxSubmit)
 
-y_pred = classifier.predict(X_test)
-from sklearn.metrics import confusion_matrix
-confusion_matrix = confusion_matrix(y_test, y_pred)
-print(confusion_matrix)
+             layout.addWidget(self.textboxSubmit)
+             layout.addWidget(self.textboxData)
+
+        print(self.textboxSubmitList[:])
+        # button push
+        self.cb.currentIndexChanged.connect(self.selectionchange)
+        self.button = QPushButton('Test', self)
+        self.button.move(200, 900)
+        self.button.resize(200,50)
+        self.button.clicked.connect(self.handleButton)
+        self.showMaximized() # fullscreen
+     
+        # self.textFeild = QTextEdit(parent)
+        # # self.textFeild.setReadOnly(True)
+        # self.textFeild.setLineWrapMode(QTextEdit.NoWrap)
+        # self.textFeild.insertPlainText("hello from the other sideee")
+        
+
+        # layout.addWidget(self.textFeild)
+        # layout.addWidget(self.textbox)
+        # layout.addWidget(self.cb)
+        layout.addWidget(self.button)
+        layout = QVBoxLayout(self)
+        self.setLayout(layout)
+        self.setWindowTitle("combo box demo")
+
+
+    def textChange(self,i):
+        print "Items in the list are :"
+          	
+        for count in range(self.cb.count()):
+           print self.cb.itemText(count)
+        print "Current index",i,"selection changed ",self.cb.currentText()
+    def handleText(self):
+        print ('Hello World')
+
+    def selectionchange(self,i):
+        print "Items in the list are :"
+          	
+        for count in range(self.cb.count()):
+           print self.cb.itemText(count)
+        print "Current index",i,"selection changed ",self.cb.currentText()
+    def handleButton(self):
+        print ('Hello World')
+
+    def get(self, i):
+        return self.textboxSubmitList[i].displayText()
+		
+def main():
+    app = QApplication(sys.argv)
+    ex = combodemo()
+    ex.show()
+    print(ex.get(1))
+    sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    main()
