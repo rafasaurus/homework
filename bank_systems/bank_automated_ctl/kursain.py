@@ -2,6 +2,7 @@
 import sys
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+import LogisticRegression
 
 class combodemo(QWidget):
     def __init__(self, parent = None):
@@ -68,7 +69,7 @@ class combodemo(QWidget):
     #     print "Current index",i,"selection changed ",self.cb.currentText()
 
     def handleButton(self):
-        print "test:", str(self.get_textbox_value(1))
+        print("test:", str(self.get_textbox_value(1)))
 
     def get_textbox_value(self, i):
         return self.textboxSubmitList[i].displayText()

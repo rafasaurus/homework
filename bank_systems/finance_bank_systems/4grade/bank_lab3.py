@@ -98,8 +98,22 @@ def checkNonLiqudityBalance(Passives, Asset):
     else:
         print("> pass None Liquidity Balance")
         return 1
+def checkOperativeLiquidity(Passives, Asset):
+    if (Asset["settlementAccount"] / Passives["commitmentsToStaff"] > 1):
+        print("pass Operative Liquidity")
+    else:
+        print("does not pass Operative Liquidity")
+def checkCurrentLiquidity(Passives, Asset):
+    if ((Asset["settlementAccount"] + Asset["materials"]) / (Passives["creditDebt"] + Passives["longTermԼoans"]) >2):
+        print("pass Current Liquidity")
+    else:
+        print("does not pass Current Liquidity")
 
-    
+def checkAbsoluteLiquidity(Passives, Asset):
+    if ((Asset["settlementAccount"] + Asset["materials"] + Asset["generalResources"]) / (Passives["creditDebt"] + Passives["longTermԼoans"] + Passives["commitmentsToStaff"]) >2):
+        print("pass Absolute Liquidity")
+    else:
+        print("does not pass Absolute Liquidity")
 def IntangibleAssetCompute(Passives,Asset):
     return Passives, Asset
 
@@ -173,6 +187,9 @@ print(" ------ before transactions ------")
 result = checkAbsoluteLiquidity(Passives, Asset)
 checkLiquidityBalance(Passives, Asset)
 checkNonLiqudityBalance(Passives, Asset)
+checkOperativeLiquidity(Passives, Asset)
+checkCurrentLiquidity(Passives, Asset)
+checkAbsoluteLiquidity(Passives, Asset)
 BalanceCompare(Passives, Asset)
 # transactions
 Passives, Asset = SettlementAccountCompute(Passives,Asset)
