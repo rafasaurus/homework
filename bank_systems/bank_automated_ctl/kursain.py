@@ -1,7 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import sys
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtWidgets import QWidget, QPushButton, QApplication, QHBoxLayout, QLabel, QLineEdit, QVBoxLayout
 import LogisticRegression
 
 class combodemo(QWidget):
