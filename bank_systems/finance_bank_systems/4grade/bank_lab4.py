@@ -1,10 +1,14 @@
 #!/usr/bin/python3
 import logging
-
+import xlwt
+from tempfile import TemporaryFile
+book = xlwt.Workbook()
+sheet1 = book.add_sheet('sheet1')
+import csv
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 
 def setup_logger(name, level=logging.INFO):
-    handler = logging.FileHandler("./log_files_lab_3/" + str(name) + ".log")        
+    handler = logging.FileHandler("./log_files_lab_4/" + str(name) + ".log")        
     handler.setFormatter(formatter)
 
     logger = logging.getLogger(name)
@@ -19,6 +23,28 @@ def logQuery(name, value):
     logger.info("*** new query ***")
     logger.info(str(name) + ":" + str(value))
     print("creating:" + str(name))
+
+def xls_writer(field_1, field_2, field_1_str, field_2_str, index, index_value, Asset, Passives):
+    sheet1.write(0,field_1,field_1_str)
+    index=0
+    for str_, value_ in Asset.items():
+        index+=1
+        sheet1.write(index,field_1,str_)
+    
+    index_value=0
+    for str_, value_ in Asset.items():
+        index_value+=1
+        sheet1.write(index_value,field_2,value_)
+    
+    sheet1.write(0,field_2,field_2_str)
+    
+    for str_, value_ in Passives.items():
+        index+=1
+        sheet1.write(index,field_1,str_)
+    
+    for str_, value_ in Passives.items():
+        index_value+=1
+        sheet1.write(index_value,field_2,value_)
 
 Asset = {
     "generalResources": 25000, #հիմնական միջոցներ  # ''' A '''
@@ -46,8 +72,8 @@ Passives = {
     # "deposit":0,
 }
 
-profit = 20000
-ammount_FromCommitmentsToStuff_To_Credit_Debt = 20000
+profit = 200000
+ammount_FromCommitmentsToStuff_To_Credit_Debt = 200000
 getDeposit = 2000
 
 # # economyr resources compute
@@ -182,6 +208,18 @@ def BalanceCompare(Passives, Asset):
 # print(Asset)
 BalanceCompare(Passives, Asset)
 
+def AfterTransactionBalance(beforePassives, beforeAsset, afterPassives, afterAsset):
+    ATB_Passives = {key: afterPassives[key] - beforePassives.get(key, 0) for key in afterPassives.keys()}
+    ATB_Asset = {key: afterAsset[key] - beforeAsset.get(key, 0) for key in afterAsset.keys()}
+    print("AfterTransactionOverAllBalance:", ATB_Passives)
+    print("AfterTransactionOverAllBalance:", ATB_Asset)
+    BalanceCompute(ATB_Passives)
+    BalanceCompute(ATB_Asset)
+    print("AfterTransactionOverAllBalance_Passives: ", ATB_Passives["balance"])
+    print("AfterTransactionOverAllBalance_Asset: ", ATB_Asset["balance"])
+    # return afterPassives - beforePassives, afterAsset - beforeAsset 
+    pass
+
 
 print(" ------ before transactions ------") 
 result = checkAbsoluteLiquidity(Passives, Asset)
@@ -192,9 +230,16 @@ checkCurrentLiquidity(Passives, Asset)
 checkAbsoluteLiquidity(Passives, Asset)
 BalanceCompare(Passives, Asset)
 # transactions
+beforePassives = Passives.copy()
+beforeAsset = Asset.copy()
 Passives, Asset = SettlementAccountCompute(Passives,Asset)
 Passives, Asset = CreditDebtCompute(Passives,Asset)
+
+#TODO
+xls_writer(field_1, field_2, field_1_str, field_2_str, index, index_value, Asset, Passives):
+
 # Passives, Asset = CommitmentsToStuffCompute(Passives,Asset)
+AfterTransactionBalance(beforePassives, beforeAsset, Passives, Asset)
 # Passives, Asset = CashRegisterCompute(Passives,Asset)
 # Passives, Asset = CommercialCreditDebtCompute(Passives,Asset)
 print(" ------ after transactions ------") 
@@ -202,3 +247,6 @@ result = checkAbsoluteLiquidity(Passives, Asset)
 checkLiquidityBalance(Passives, Asset)
 checkNonLiqudityBalance(Passives, Asset)
 BalanceCompare(Passives, Asset)
+name = "random.xls"
+book.save(name)
+book.save(TemporaryFile())
