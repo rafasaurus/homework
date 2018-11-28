@@ -24,8 +24,18 @@ sns.set(style="whitegrid", color_codes=True)
 
 # In[2]:
 class logic:
-    def inference(self, X):
-        return self.logreg.predict(X)
+    def __init__(self):
+        self.x_test_ = []
+        pass
+    def setTestData(self, x_test):
+        print("7777777777777777777777777777777: ", x_test)
+        self.x_test_ = x_test
+    def inference(self):
+        return self.logreg.predict(self.x_test_)
+    def getDataSampleValue(self):
+        data = pd.read_csv('bank.csv', header=0, skiprows=1)
+        data = data.dropna()
+        return data.iloc[:].head(1).copy()
     def train(self):
         data = pd.read_csv('bank.csv', header=0)
         data = data.dropna()
@@ -298,7 +308,7 @@ class logic:
 
         self.logreg = LogisticRegression()
 
-        rfe = RFE(logreg, 18)
+        rfe = RFE(self.logreg, 18)
         rfe = rfe.fit(data_final[X], data_final[y] )
         print(rfe.support_)
         print(rfe.ranking_)
@@ -337,8 +347,8 @@ class logic:
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
         from sklearn.linear_model import LogisticRegression
         from sklearn import metrics
-        logreg = LogisticRegression()
-        logreg.fit(X_train, y_train)
+        self.logreg = LogisticRegression()
+        self.logreg.fit(X_train, y_train)
         
         
         # #### Predicting the test set results and caculating the accuracy
@@ -346,15 +356,16 @@ class logic:
         # In[50]:
         
         
-        y_pred = logreg.predict(X_test)
-        print("debug::::X_test:", X_train.head)
+        y_pred = self.logreg.predict(X_test)
+        print("deself.bug::::X_test:", X_train.head)
+        print("shape: " , X_test.shape())
         print("debug::::y_pred:", y_pred.shape)
         
         
         # In[45]:
         
         
-        print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(logreg.score(X_test, y_test)))
+        print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(self.logreg.score(X_test, y_test)))
         
         
         # ### Cross Validation
@@ -388,7 +399,7 @@ class logic:
         # In[35]:
         
         
-        print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(logreg.score(X_test, y_test)))
+        print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(self.logreg.score(X_test, y_test)))
         
         
         # #### Compute precision, recall, F-measure and support
@@ -430,8 +441,8 @@ class logic:
         
         from sklearn.metrics import roc_auc_score
         from sklearn.metrics import roc_curve
-        logit_roc_auc = roc_auc_score(y_test, logreg.predict(X_test))
-        fpr, tpr, thresholds = roc_curve(y_test, logreg.predict_proba(X_test)[:,1])
+        logit_roc_auc = roc_auc_score(y_test, self.logreg.predict(X_test))
+        fpr, tpr, thresholds = roc_curve(y_test, self.logreg.predict_proba(X_test)[:,1])
         plt.figure()
         plt.plot(fpr, tpr, label='Logistic Regression (area = %0.2f)' % logit_roc_auc)
         plt.plot([0, 1], [0, 1],'r--')

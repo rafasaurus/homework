@@ -9,7 +9,8 @@
 * loan repayment plan
 * send/receive form algorithm
 * add customer csv
-
+#### issues
+```can't pass "x_test" to self.mocel_.inference()```
 #### useful links
 PyQT Doc
 * [doc link](https://doc.qt.io)
