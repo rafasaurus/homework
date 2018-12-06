@@ -7,6 +7,39 @@ sheet1 = book.add_sheet('sheet1')
 import csv
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 
+index=0
+index_value=0
+row_index=0
+row_index_value=0
+field_editable = True
+
+
+Asset = {
+    "generalResources": 25000, #հիմնական միջոցներ  # ''' A '''
+    "materials": 20000, #նյութեր                  # ''' B '''
+    "settlementAccount": 35000, #հաշվարկային հաշիվ # ''' C '''
+    "mainProduct": 50000,                             # ''' D '''
+    "delayedExpenses": 40000, #հետաձգված ծախսեր       # ''' E '''
+    "unfinshedJobs": 70000,                           # ''' F '''
+    "damage": 30000,                                  # ''' G '''
+   "balance":75000 #հաշվեկշիռ
+    # "intangibleAsset":6000, #ոչ նյութական ակտիվ
+    # "cashRegister":200000, #դրամարկղ
+    # "resources":5000,
+    # "unfinishedProduct":4000, #անավարտ արտադրանք
+}
+
+Passives = {
+    "capital":60000,                                            # ''' H  ''' 
+    "profit":10000,                                                 # ''' I  ''' 
+    "creditDebt":70000,                                             # ''' J  ''' 
+    "commitmentsToStaff":100000, #պարտավորություններ անձնակազմին # ''' K  ''' 
+    "longTermԼoans":30000, #կարճաժամկետ վարկեր                      # ''' L  ''' 
+    "balance":75000                                                       
+    # "commercialCreditDebt":180000, #առևվտրային կրեդիտ պարտք
+    # "deposit":0,
+}
+
 def setup_logger(name, level=logging.INFO):
     handler = logging.FileHandler("./log_files_lab_4/" + str(name) + ".log")        
     handler.setFormatter(formatter)
@@ -24,19 +57,18 @@ def logQuery(name, value):
     logger.info(str(name) + ":" + str(value))
     print("creating:" + str(name))
 
-def xls_writer(field_1, field_2, field_1_str, field_2_str, index, index_value, Asset, Passives):
-    sheet1.write(0,field_1,field_1_str)
-    index=0
+def xls_writer(field_1, field_2, Asset, Passives):
+    global index
+    global index_value
+    print("index:", index)
     for str_, value_ in Asset.items():
         index+=1
         sheet1.write(index,field_1,str_)
     
-    index_value=0
     for str_, value_ in Asset.items():
         index_value+=1
         sheet1.write(index_value,field_2,value_)
     
-    sheet1.write(0,field_2,field_2_str)
     
     for str_, value_ in Passives.items():
         index+=1
@@ -45,32 +77,8 @@ def xls_writer(field_1, field_2, field_1_str, field_2_str, index, index_value, A
     for str_, value_ in Passives.items():
         index_value+=1
         sheet1.write(index_value,field_2,value_)
+    print("index:", index)
 
-Asset = {
-    "generalResources": 25000, #հիմնական միջոցներ  # ''' A '''
-    "materials": 20000, #նյութեր                  # ''' B '''
-    "settlementAccount": 35000, #հաշվարկային հաշիվ # ''' C '''
-    "mainProduct": 50000,                             # ''' D '''
-    "delayedExpenses": 40000, #հետաձգված ծախսեր       # ''' E '''
-    "unfinshedJobs": 70000,                           # ''' F '''
-    "damage": 30000,                                  # ''' G '''
-    "balance":75000 #հաշվեկշիռ
-    # "intangibleAsset":6000, #ոչ նյութական ակտիվ
-    # "cashRegister":200000, #դրամարկղ
-    # "resources":5000,
-    # "unfinishedProduct":4000, #անավարտ արտադրանք
-}
-
-Passives = {
-    "capital":60000,                                            # ''' H  ''' 
-    "profit":10000,                                                 # ''' I  ''' 
-    "creditDebt":70000,                                             # ''' J  ''' 
-    "commitmentsToStaff":100000, #պարտավորություններ անձնակազմին # ''' K  ''' 
-    "longTermԼoans":30000, #կարճաժամկետ վարկեր                      # ''' L  ''' 
-    "balance":75000                                                       
-    # "commercialCreditDebt":180000, #առևվտրային կրեդիտ պարտք
-    # "deposit":0,
-}
 
 profit = 200000
 ammount_FromCommitmentsToStuff_To_Credit_Debt = 200000
@@ -235,8 +243,16 @@ beforeAsset = Asset.copy()
 Passives, Asset = SettlementAccountCompute(Passives,Asset)
 Passives, Asset = CreditDebtCompute(Passives,Asset)
 
-#TODO
-xls_writer(field_1, field_2, field_1_str, field_2_str, index, index_value, Asset, Passives):
+# #TODO
+sheet1.write(0, 0, "flan")
+sheet1.write(0, 1, "fstan")
+sheet1.write(0, 2, "flan")
+sheet1.write(0, 3, "fstan")
+xls_writer(0, 1, Asset, Passives)
+print("index:", index)
+index = 0
+index_value = 0
+xls_writer(2, 3, Asset, Passives)
 
 # Passives, Asset = CommitmentsToStuffCompute(Passives,Asset)
 AfterTransactionBalance(beforePassives, beforeAsset, Passives, Asset)
