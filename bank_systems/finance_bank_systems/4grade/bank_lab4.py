@@ -7,12 +7,25 @@ sheet1 = book.add_sheet('sheet1')
 import csv
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 
-index=0
-index_value=0
-row_index=0
-row_index_value=0
+index=1
+index_value=1
 field_editable = True
 
+
+Asset_With_Zeros = {
+    "generalResources": 0, #հիմնական միջոցներ  # ''' A '''
+    "materials": 0, #նյութեր                  # ''' B '''
+    "settlementAccount": 0, #հաշվարկային հաշիվ # ''' C '''
+    "mainProduct": 0,                             # ''' D '''
+    "delayedExpenses": 0, #հետաձգված ծախսեր       # ''' E '''
+    "unfinshedJobs": 0,                           # ''' F '''
+    "damage": 0,                                  # ''' G '''
+   "balance":0 #հաշվեկշիռ
+    # "intangibleAsset":6000, #ոչ նյութական ակտիվ
+    # "cashRegister":200000, #դրամարկղ
+    # "resources":5000,
+    # "unfinishedProduct":4000, #անավարտ արտադրանք
+}
 
 Asset = {
     "generalResources": 25000, #հիմնական միջոցներ  # ''' A '''
@@ -27,6 +40,17 @@ Asset = {
     # "cashRegister":200000, #դրամարկղ
     # "resources":5000,
     # "unfinishedProduct":4000, #անավարտ արտադրանք
+}
+
+Passives_With_Zeros = {
+    "capital":0,                                            # ''' H  ''' 
+    "profit":0,                                                 # ''' I  ''' 
+    "creditDebt":0,                                             # ''' J  ''' 
+    "commitmentsToStaff":0, #պարտավորություններ անձնակազմին # ''' K  ''' 
+    "longTermԼoans":0, #կարճաժամկետ վարկեր                      # ''' L  ''' 
+    "balance":0                                                       
+    # "commercialCreditDebt":180000, #առևվտրային կրեդիտ պարտք
+    # "deposit":0,
 }
 
 Passives = {
@@ -60,7 +84,9 @@ def logQuery(name, value):
 def xls_writer(field_1, field_2, Asset, Passives):
     global index
     global index_value
-    print("index:", index)
+    # print("index:", index)
+    Asset.pop('balance', 0)
+    Passives.pop('balance', 0)
     for str_, value_ in Asset.items():
         index+=1
         sheet1.write(index,field_1,str_)
@@ -69,7 +95,6 @@ def xls_writer(field_1, field_2, Asset, Passives):
         index_value+=1
         sheet1.write(index_value,field_2,value_)
     
-    
     for str_, value_ in Passives.items():
         index+=1
         sheet1.write(index,field_1,str_)
@@ -77,7 +102,30 @@ def xls_writer(field_1, field_2, Asset, Passives):
     for str_, value_ in Passives.items():
         index_value+=1
         sheet1.write(index_value,field_2,value_)
-    print("index:", index)
+    # print("index:", index)
+
+def xls_writer_only_values(field_1, field_2, Asset, Passives):
+    global index
+    global index_value
+    # print("index:", index)
+    Asset.pop('balance', 0)
+    Passives.pop('balance', 0)
+    # for str_, value_ in Asset.items():
+    #     index+=1
+    #     sheet1.write(index,field_1,str_)
+    
+    for str_, value_ in Asset.items():
+        index_value+=1
+        sheet1.write(index_value,field_2-1,value_)
+    
+    # for str_, value_ in Passives.items():
+    #     index+=1
+    #     sheet1.write(index,field_1,str_)
+    
+    for str_, value_ in Passives.items():
+        index_value+=1
+        sheet1.write(index_value,field_2-1,value_)
+    # print("index:", index)
 
 
 profit = 200000
@@ -217,10 +265,18 @@ def BalanceCompare(Passives, Asset):
 BalanceCompare(Passives, Asset)
 
 def AfterTransactionBalance(beforePassives, beforeAsset, afterPassives, afterAsset):
+    global index
+    global index_value
     ATB_Passives = {key: afterPassives[key] - beforePassives.get(key, 0) for key in afterPassives.keys()}
     ATB_Asset = {key: afterAsset[key] - beforeAsset.get(key, 0) for key in afterAsset.keys()}
     print("AfterTransactionOverAllBalance:", ATB_Passives)
     print("AfterTransactionOverAllBalance:", ATB_Asset)
+    index = 1
+    index_value = 1
+    xls_writer_only_values(2, 4, ATB_Asset, Passives_With_Zeros)
+    index = 1
+    index_value = 1
+    xls_writer_only_values(4, 5, Asset_With_Zeros, ATB_Passives)
     BalanceCompute(ATB_Passives)
     BalanceCompute(ATB_Asset)
     print("AfterTransactionOverAllBalance_Passives: ", ATB_Passives["balance"])
@@ -237,22 +293,46 @@ checkOperativeLiquidity(Passives, Asset)
 checkCurrentLiquidity(Passives, Asset)
 checkAbsoluteLiquidity(Passives, Asset)
 BalanceCompare(Passives, Asset)
+
+# #TODO
+sheet1.write(0, 1, "Մնաց․ Սկզբ․")
+sheet1.write(0, 3, "Շրջանառությունը հաշվետու ժամանակաշրջանում")
+sheet1.write(0, 5, "Մնաց․ Վերջում")
+
+sheet1.write(1, 0, "հաշվ անվանում")
+sheet1.write(1, 1, "Դ")
+sheet1.write(1, 2, "Կ")
+sheet1.write(1, 3, "Դ")
+sheet1.write(1, 4, "Կ")
+sheet1.write(1, 5, "Դ")
+sheet1.write(1, 6, "Կ")
+
+xls_writer(0, 1, Asset, Passives_With_Zeros)
+index = 1
+index_value = 1
+xls_writer_only_values(0, 3, Asset_With_Zeros, Passives)
+
 # transactions
 beforePassives = Passives.copy()
 beforeAsset = Asset.copy()
 Passives, Asset = SettlementAccountCompute(Passives,Asset)
 Passives, Asset = CreditDebtCompute(Passives,Asset)
 
-# #TODO
-sheet1.write(0, 0, "flan")
-sheet1.write(0, 1, "fstan")
-sheet1.write(0, 2, "flan")
-sheet1.write(0, 3, "fstan")
-xls_writer(0, 1, Asset, Passives)
-print("index:", index)
-index = 0
-index_value = 0
-xls_writer(2, 3, Asset, Passives)
+index = 1
+index_value = 1
+xls_writer_only_values(0, 6, Asset, Passives_With_Zeros)
+index = 1
+index_value = 1
+xls_writer_only_values(0, 7, Asset_With_Zeros, Passives)
+
+
+
+# xls_writer(2, 3, ATB_Asset, Passives_With_Zeros)
+# index = 1
+# index_value = 1
+# xls_writer(4, 5, Asset_With_Zeros, ATB_Passives)
+
+
 
 # Passives, Asset = CommitmentsToStuffCompute(Passives,Asset)
 AfterTransactionBalance(beforePassives, beforeAsset, Passives, Asset)
