@@ -28,14 +28,47 @@ class logic:
         self.x_test_ = []
         pass
     def setTestData(self, x_test):
-        print("7777777777777777777777777777777: ", x_test)
         self.x_test_ = x_test
     def inference(self):
-        return self.logreg.predict(self.x_test_)
+        return self.logreg.predict_proba(self.x_test_)
     def getDataSampleValue(self):
-        data = pd.read_csv('bank.csv', header=0, skiprows=1)
+        data = pd.read_csv('bank.csv', header=0)
         data = data.dropna()
-        return data.iloc[:].head(1).copy()
+
+        data['education'].unique()
+        data['education']=np.where(data['education'] =='basic.9y', 'Basic', data['education'])
+        data['education']=np.where(data['education'] =='basic.6y', 'Basic', data['education'])
+        data['education']=np.where(data['education'] =='basic.4y', 'Basic', data['education'])
+        data['education'].unique()
+        data['y'].value_counts()
+        data.groupby('y').mean()
+        data.groupby('job').mean()
+        data.groupby('marital').mean()
+        data.groupby('education').mean()
+        cat_vars=['job','marital','education','default','housing','loan','contact','month','day_of_week','poutcome']
+        for var in cat_vars:
+            cat_list='var'+'_'+var
+            cat_list = pd.get_dummies(data[var], prefix=var)
+            data1=data.join(cat_list)
+            data=data1
+        cat_vars=['job','marital','education','default','housing','loan','contact','month','day_of_week','poutcome']
+        data_vars=data.columns.values.tolist()
+        to_keep=[i for i in data_vars if i not in cat_vars]
+        data_final=data[to_keep]
+        data_final.columns.values
+        data_final_vars=data_final.columns.values.tolist()
+        y=['y']
+        X=[i for i in data_final_vars if i not in y]
+        cols=["previous", "euribor3m", "job_blue-collar", "job_retired", "job_services", "job_student", "default_no", 
+              "month_aug", "month_dec", "month_jul", "month_nov", "month_oct", "month_sep", "day_of_week_fri", "day_of_week_wed", 
+              "poutcome_failure", "poutcome_nonexistent", "poutcome_success"] 
+        X=data_final[cols]
+        y=data_final['y']
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+        # return X_test.head(1)
+        return X_test.head(1)
+
+        # return data.iloc[:].head(1).copy()
     def train(self):
         data = pd.read_csv('bank.csv', header=0)
         data = data.dropna()
@@ -357,9 +390,8 @@ class logic:
         
         
         y_pred = self.logreg.predict(X_test)
-        print("deself.bug::::X_test:", X_train.head)
-        print("shape: " , X_test.shape())
-        print("debug::::y_pred:", y_pred.shape)
+        print("deself.bug::::X_test:", X_train.shape)
+        print("shape: " , X_test.shape)
         
         
         # In[45]:
