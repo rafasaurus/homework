@@ -33,6 +33,7 @@ class logic:
         print("self.x_test: ", self.x_test_)
     def inference(self):
         print("self.x_test: ", self.x_test_)
+        self.x_test_ = self.x_test_.reshape(1, -1)
         return self.logreg.predict_proba(self.x_test_)
     def getDataSampleValue(self):
         data = pd.read_csv('bank.csv', header=0)
@@ -68,7 +69,6 @@ class logic:
         X=data_final[cols]
         y=data_final['y']
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
-        # return X_test.head(1)
         return X_test.head(1)
 
         # return data.iloc[:].head(1).copy()
@@ -319,7 +319,6 @@ class logic:
         
         
         data_final=data[to_keep]
-        print("debug_data_final: ", data_final)
         data_final.columns.values
         
         
@@ -356,7 +355,7 @@ class logic:
               "month_aug", "month_dec", "month_jul", "month_nov", "month_oct", "month_sep", "day_of_week_fri", "day_of_week_wed", 
               "poutcome_failure", "poutcome_nonexistent", "poutcome_success"] 
         X=data_final[cols]
-        X.to_csv("debug.csv")
+        # X.to_csv("debug.csv")
         y=data_final['y']
         
         
