@@ -26,10 +26,13 @@ sns.set(style="whitegrid", color_codes=True)
 class logic:
     def __init__(self):
         self.x_test_ = []
+        self.logreg = LogisticRegression()
         pass
     def setTestData(self, x_test):
         self.x_test_ = x_test
+        print("self.x_test: ", self.x_test_)
     def inference(self):
+        print("self.x_test: ", self.x_test_)
         return self.logreg.predict_proba(self.x_test_)
     def getDataSampleValue(self):
         data = pd.read_csv('bank.csv', header=0)
@@ -75,12 +78,9 @@ class logic:
         print(data.shape)
         print(list(data.columns))
         
-        
         # In[3]:
         
-        
         data.head()
-        
         
         # #### Input variables
         
@@ -109,7 +109,7 @@ class logic:
         # 12 - campaign: number of contacts performed during this campaign and for this client (numeric, includes last contact)
         # 
         # 13 - pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric; 999 means client was not previously contacted)
-        # # 14 - previous: number of contacts performed before this campaign and for this client (numeric)
+        # 14 - previous: number of contacts performed before this campaign and for this client (numeric)
         # 
         # 15 - poutcome: outcome of the previous marketing campaign (categorical: 'failure','nonexistent','success')
         # 
@@ -319,6 +319,7 @@ class logic:
         
         
         data_final=data[to_keep]
+        print("debug_data_final: ", data_final)
         data_final.columns.values
         
         
@@ -339,9 +340,8 @@ class logic:
         from sklearn.feature_selection import RFE
         from sklearn.linear_model import LogisticRegression
 
-        self.logreg = LogisticRegression()
 
-        rfe = RFE(self.logreg, 18)
+        rfe = RFE(self.logreg, 18)# The Recursive Feature Elimination (RFE)
         rfe = rfe.fit(data_final[X], data_final[y] )
         print(rfe.support_)
         print(rfe.ranking_)
@@ -356,6 +356,7 @@ class logic:
               "month_aug", "month_dec", "month_jul", "month_nov", "month_oct", "month_sep", "day_of_week_fri", "day_of_week_wed", 
               "poutcome_failure", "poutcome_nonexistent", "poutcome_success"] 
         X=data_final[cols]
+        X.to_csv("debug.csv")
         y=data_final['y']
         
         
@@ -388,8 +389,8 @@ class logic:
         
         # In[50]:
         
-        
-        y_pred = self.logreg.predict(X_test)
+        test_ = [[0.  ,  1.405 ,1.,    0.,    0.    ,0.   , 1.   , 0.  ,  0. ,   0. ,   0.,    0.,  0.  ,  0.  ,  0.  ,  0.   , 1.  ,  0.   ]]
+        y_pred = self.logreg.predict(test_)
         print("deself.bug::::X_test:", X_train.shape)
         print("shape: " , X_test.shape)
         
@@ -419,70 +420,70 @@ class logic:
         # In[31]:
         
         
-        from sklearn.metrics import confusion_matrix
-        confusion_matrix = confusion_matrix(y_test, y_pred)
-        print(confusion_matrix)
-        
-        
-        # The result is telling us that we have 10872+254 correct predictions and 1122+109 incorrect predictions.
-        
-        # #### Accuracy
-        
-        # In[35]:
-        
-        
-        print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(self.logreg.score(X_test, y_test)))
-        
-        
-        # #### Compute precision, recall, F-measure and support
+        # from sklearn.metrics import confusion_matrix
+        # confusion_matrix = confusion_matrix(y_test, y_pred)
+        # print(confusion_matrix)
         # 
-        # The precision is the ratio tp / (tp + fp) where tp is the number of true positives and fp the number of false positives. The precision is intuitively the ability of the classifier not to label as positive a sample that is negative.
         # 
-        # The recall is the ratio tp / (tp + fn) where tp is the number of true positives and fn the number of false negatives. The recall is intuitively the ability of the classifier to find all the positive samples.
+        # # The result is telling us that we have 10872+254 correct predictions and 1122+109 incorrect predictions.
         # 
-        # The F-beta score can be interpreted as a weighted harmonic mean of the precision and recall, where an F-beta score reaches its best value at 1 and worst score at 0.
+        # # #### Accuracy
         # 
-        # The F-beta score weights recall more than precision by a factor of beta. beta == 1.0 means recall and precision are equally important.
+        # # In[35]:
         # 
-        # The support is the number of occurrences of each class in y_test.
-        
-        # In[36]:
-        
-        
-        from sklearn.metrics import classification_report
-        print(classification_report(y_test, y_pred))
-        
-        
-        # #### Interpretation: 
         # 
-        # Of the entire test set, 88% of the promoted term deposit were the term deposit that the customers liked. Of the entire test set, 90% of the customer's preferred term deposit were promoted.
-        
-        # ### ROC Curvefrom sklearn import metrics
-        # from ggplot import *
+        # print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(self.logreg.score(X_test, y_test)))
         # 
-        # prob = clf1.predict_proba(X_test)[:,1]
-        # fpr, sensitivity, _ = metrics.roc_curve(Y_test, prob)
         # 
-        # df = pd.DataFrame(dict(fpr=fpr, sensitivity=sensitivity))
-        # ggplot(df, aes(x='fpr', y='sensitivity')) +\
-        #     geom_line() +\
-        #     geom_abline(linetype='dashed')
-        
-        # In[37]:
-        
-        
-        from sklearn.metrics import roc_auc_score
-        from sklearn.metrics import roc_curve
-        logit_roc_auc = roc_auc_score(y_test, self.logreg.predict(X_test))
-        fpr, tpr, thresholds = roc_curve(y_test, self.logreg.predict_proba(X_test)[:,1])
-        plt.figure()
-        plt.plot(fpr, tpr, label='Logistic Regression (area = %0.2f)' % logit_roc_auc)
-        plt.plot([0, 1], [0, 1],'r--')
-        plt.xlim([0.0, 1.0])
-        plt.ylim([0.0, 1.05])
-        plt.xlabel('False Positive Rate')
-        plt.ylabel('True Positive Rate')
-        plt.title('Receiver operating characteristic')
-        plt.legend(loc="lower right")
-        plt.savefig('Log_ROC')
-        # plt.show()
+        # # #### Compute precision, recall, F-measure and support
+        # # 
+        # # The precision is the ratio tp / (tp + fp) where tp is the number of true positives and fp the number of false positives. The precision is intuitively the ability of the classifier not to label as positive a sample that is negative.
+        # # 
+        # # The recall is the ratio tp / (tp + fn) where tp is the number of true positives and fn the number of false negatives. The recall is intuitively the ability of the classifier to find all the positive samples.
+        # # 
+        # # The F-beta score can be interpreted as a weighted harmonic mean of the precision and recall, where an F-beta score reaches its best value at 1 and worst score at 0.
+        # # 
+        # # The F-beta score weights recall more than precision by a factor of beta. beta == 1.0 means recall and precision are equally important.
+        # # 
+        # # The support is the number of occurrences of each class in y_test.
+        # 
+        # # In[36]:
+        # 
+        # 
+        # from sklearn.metrics import classification_report
+        # print(classification_report(y_test, y_pred))
+        # 
+        # 
+        # # #### Interpretation: 
+        # # 
+        # # Of the entire test set, 88% of the promoted term deposit were the term deposit that the customers liked. Of the entire test set, 90% of the customer's preferred term deposit were promoted.
+        # 
+        # # ### ROC Curvefrom sklearn import metrics
+        # # from ggplot import *
+        # # 
+        # # prob = clf1.predict_proba(X_test)[:,1]
+        # # fpr, sensitivity, _ = metrics.roc_curve(Y_test, prob)
+        # # 
+        # # df = pd.DataFrame(dict(fpr=fpr, sensitivity=sensitivity))
+        # # ggplot(df, aes(x='fpr', y='sensitivity')) +\
+        # #     geom_line() +\
+        # #     geom_abline(linetype='dashed')
+        # 
+        # # In[37]:
+        # 
+        # 
+        # from sklearn.metrics import roc_auc_score
+        # from sklearn.metrics import roc_curve
+        # logit_roc_auc = roc_auc_score(y_test, self.logreg.predict(X_test))
+        # fpr, tpr, thresholds = roc_curve(y_test, self.logreg.predict_proba(X_test)[:,1])
+        # plt.figure()
+        # plt.plot(fpr, tpr, label='Logistic Regression (area = %0.2f)' % logit_roc_auc)
+        # plt.plot([0, 1], [0, 1],'r--')
+        # plt.xlim([0.0, 1.0])
+        # plt.ylim([0.0, 1.05])
+        # plt.xlabel('False Positive Rate')
+        # plt.ylabel('True Positive Rate')
+        # plt.title('Receiver operating characteristic')
+        # plt.legend(loc="lower right")
+        # plt.savefig('Log_ROC')
+        # # plt.show()
