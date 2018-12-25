@@ -7,13 +7,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from LogisticRegression import logic
 
-def renta_after_month_pass(income, percentage, month): # how much will overall dept be after "time" months
-    percentage /= 100
-    back = income* (1 + percentage)**month
-    for i in range(month): # in years
-        back -= income * percentage*i
-        print("back debug: ", back) # d1=percentage*i
-    return int(back)
 
 class combodemo(QWidget):
     def __init__(self, parent = None):
@@ -91,19 +84,19 @@ class combodemo(QWidget):
         self.layout.addWidget(self.textboxData)
         self.textboxSubmitList = []
 
-        # percentage lineEdit 
+        # months lineEdit 
         self.textboxSubmit = QLineEdit(self)
         self.textboxSubmit.move(900, 40 * 2)
         self.textboxSubmit.resize(50,40)
-        self.textboxSubmit.setText(str(20))
+        self.textboxSubmit.setText(str(5))
         self.textboxSubmitList.append(self.textboxSubmit.text())
         self.layout.addWidget(self.textboxSubmit)
 
-        # -------------------------- renta_after_months
+        # renta_after_months
         self.rentaLabel= QLabel(self)
         self.rentaLabel.move(1200, 40 * 1)
         self.rentaLabel.resize(200,40)
-        self.rentaLabel.setText("ռենտա")
+        self.rentaLabel.setText("մնացորդային գումար")
         self.layout.addWidget(self.rentaLabel)
         self.textboxSubmitList = []
 
@@ -114,6 +107,23 @@ class combodemo(QWidget):
         self.rentaLineEdit.setText(str(0))
         self.textboxSubmitList.append(self.rentaLineEdit.text())
         self.layout.addWidget(self.rentaLineEdit)
+
+        # table label
+        self.rentaLabel= QLabel(self)
+        self.rentaLabel.move(600, 320)
+        self.rentaLabel.resize(200,40)
+        self.rentaLabel.setText("Ամսեկան պլան")
+        self.layout.addWidget(self.rentaLabel)
+        self.textboxSubmitList = []
+
+        # table
+        self.tableWidget = QTableWidget(self)
+        self.tableWidget.setHorizontalHeaderLabels(['ամիս', 'գումար'])
+        self.tableWidget.setRowCount(int(self.access_widget(42).text()))
+        self.tableWidget.setColumnCount(1)
+        self.tableWidget.setColumnWidth(0, 500)
+        self.tableWidget.move(600, 350)
+        self.tableWidget.resize(100, int(self.access_widget(42).text()) * 50)
 
         # buttons
         self.buttonTrain = QPushButton('Train', self)
@@ -127,7 +137,7 @@ class combodemo(QWidget):
         self.buttonInference.clicked.connect(self.handleButtonInference)
 
         self.buttonInference = QPushButton('update_renta', self)
-        self.buttonInference.move(800, 200)
+        self.buttonInference.move(600, 200)
         self.buttonInference.resize(200,50)
         self.buttonInference.clicked.connect(self.handleRentaUpdate)
         # self.layout.addWidget(self.buttonTrain)
@@ -139,8 +149,11 @@ class combodemo(QWidget):
         self.cb = QComboBox(self)
         self.cb.currentIndexChanged.connect(self.selectionchange)
         self.cb.addItems(loan_names)
-        self.cb.move(500, 5)
+        self.cb.move(500, 500)
         self.cb.setFixedSize(300, 35)
+
+
+
         # print("width: ", width)
         # self.cb.setMinimumWidth(width);
         # ----------------------------
@@ -190,11 +203,24 @@ class combodemo(QWidget):
         self.model_.train()
         print("successfully trained")
 
+    def renta_after_month_pass(self, income, percentage, month): # how much will overall dept be after "time" months
+        percentage /= 100
+        back = income * (1 + percentage)**month
+        for i in range(1, month + 1): # in years
+            # table value update
+            back -= income * percentage*i
+            self.tableWidget.setItem(i - 1, 0,  QTableWidgetItem(str(int(back))))
+        return int(back)
+
     def handleRentaUpdate(self):
         income = int(self.access_widget(38).text())
         percentage = int(self.access_widget(40).text())
         months = int(self.access_widget(42).text())
-        self.rentaLineEdit.setText(str(renta_after_month_pass(income, percentage, months)))
+        self.rentaLineEdit.setText(str(self.renta_after_month_pass(income, percentage, months)))
+
+        # table size update
+        self.tableWidget.setRowCount(int(self.access_widget(42).text()))
+        self.tableWidget.resize(100, int(self.access_widget(42).text()) * 50)
 
     def handleButtonInference(self):
 
